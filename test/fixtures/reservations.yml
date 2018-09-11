@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reserve_no: MyString
+  guest_name: MyString
+  guest_phone: MyString
+  guest_mail: MyString
+  check_in_date: 2018-09-11
+  check_out_date: 2018-09-11
+  room_id: 1
+  guest_count: 1
+  stay_note: MyString
+
+two:
+  reserve_no: MyString
+  guest_name: MyString
+  guest_phone: MyString
+  guest_mail: MyString
+  check_in_date: 2018-09-11
+  check_out_date: 2018-09-11
+  room_id: 1
+  guest_count: 1
+  stay_note: MyString

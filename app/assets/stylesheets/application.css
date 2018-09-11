@@ -1,0 +1,59 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.container {
+  width: 900px;
+  margin-left: 40px;
+}
+
+h2 {
+  border-bottom: 2px solid #000;
+}
+
+strong {
+  font-size: 18px;
+}
+
+.rooms td {
+  text-align: center;
+  border-radius: 16px;
+  border:2px solid black;
+  width:82px;
+  height:82px;
+  empty-cells: hide;
+}
+.rooms td:hover {
+  background: lightblue;
+}
+
+.room_tag {
+  display: flex;
+  padding: 14px 0;
+  border-bottom: 1px solid #000;
+}
+
+.room_tag a {
+  font-size: 14px;
+}
+
+.room_info {
+  width: 98px;
+  margin-left:16px;
+  display: block;
+}
+.room_list {
+  display: block;
+}
