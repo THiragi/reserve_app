@@ -15,8 +15,8 @@
  */
 
 .container {
-  width: 900px;
-  margin-left: 40px;
+  width: 940px;
+  margin-left: 36px;
 }
 
 h2 {
@@ -27,7 +27,7 @@ strong {
   font-size: 18px;
 }
 
-.rooms td {
+td {
   text-align: center;
   border-radius: 16px;
   border:2px solid black;
@@ -35,25 +35,27 @@ strong {
   height:82px;
   empty-cells: hide;
 }
-.rooms td:hover {
+td:hover {
   background: lightblue;
 }
 
-.room_tag {
-  display: flex;
-  padding: 14px 0;
+.room_list {
+  list-style: none;
+}
+
+.room_list li {
+  padding: 14px;
   border-bottom: 1px solid #000;
 }
 
-.room_tag a {
+.room_list a {
   font-size: 14px;
 }
 
 .room_info {
-  width: 98px;
-  margin-left:16px;
-  display: block;
+  float: left;
+  width: 96px;
 }
-.room_list {
-  display: block;
+.room_set {
+
 }

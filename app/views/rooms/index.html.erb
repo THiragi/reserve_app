@@ -1,74 +1,27 @@
 <h2>客室一覧</h2>
 
-<div class="room_tag">
-  <div class="room_info">
-    <h3>シングル</h3>
-    <a href="">部屋の詳細</a>
-  </div>
-  <div class="room_list">
-    <table class="rooms" cellspacing="8px">
-      <% @rooms.where(room_type_id: '1').in_groups_of(8)  do |row| %>
-        <tr>
-          <% row.each do |room| %>
-            <td>
-              <% if room %>
-                <strong>
-                  <%= room.room_name %>
-                </strong>
-                <br><a href="">予約状況</a>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-<div class="room_tag">
-  <div class="room_info">
-    <h3>ダブル</h3>
-    <a href="">部屋の詳細</a>
-  </div>
-  <div class="room_list">
-    <table class="rooms" cellspacing="8px">
-      <% @rooms.where(room_type_id: '2').in_groups_of(8)  do |row| %>
-        <tr>
-          <% row.each do |room| %>
-            <td>
-              <% if room %>
-                <strong>
-                  <%= room.room_name %>
-                </strong>
-                <br><a href="">予約状況</a>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
-<div class="room_tag">
-  <div class="room_info">
-    <h3>トリプル</h3>
-    <a href="">部屋の詳細</a>
-  </div>
-  <div class="room_list">
-    <table class="rooms" cellspacing="8px">
-      <% @rooms.where(room_type_id: '3').in_groups_of(8)  do |row| %>
-        <tr>
-          <% row.each do |room| %>
-            <td>
-              <% if room %>
-                <strong>
-                  <%= room.room_name %>
-                </strong>
-                <br><a href="">予約状況</a>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
+<ul class="room_list">
+  <% @room_types.each do |room_type| %>
+  <li>
+    <div class="room_info">
+      <h3><%= room_type.type_name %></h3>
+      <a href="">部屋の詳細</a>
+    </div>
+    <div class="room_set">
+      <table cellspacing="8px">
+        <% @rooms.where(room_type_id: room_type.id).in_groups_of(8)  do |row| %>
+          <tr>
+            <% row.each do |room| %>
+              <td>
+                <% if room %>
+                  <strong><%= room.room_name %></strong><br><a href="">予約状況</a>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </li>
+  <% end %>
+</ul>
