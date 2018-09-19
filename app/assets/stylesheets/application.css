@@ -14,19 +14,17 @@
  *= require_self
  */
 
+/* rooms */
 .container {
   width: 940px;
   margin-left: 36px;
 }
-
 h2 {
   border-bottom: 2px solid #000;
 }
-
 strong {
   font-size: 18px;
 }
-
 td {
   text-align: center;
   border-radius: 16px;
@@ -38,24 +36,21 @@ td {
 td:hover {
   background: lightblue;
 }
-
 .room_list {
   list-style: none;
 }
-
 .room_list li {
   padding: 14px;
   border-bottom: 1px solid #000;
 }
-
 .room_list a {
   font-size: 14px;
 }
-
 .room_info {
   float: left;
   width: 96px;
 }
 .room_set {
-
 }
+
+/* calendar */

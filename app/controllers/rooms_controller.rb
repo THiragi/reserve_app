@@ -4,4 +4,9 @@ class RoomsController < ApplicationController
     @rooms = Room.all.order(created_at: 'asc')
   end
 
+  def show
+    @room = Room.find(params[:id])
+  end
+
+
 end
