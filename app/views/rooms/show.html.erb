@@ -1,14 +1,11 @@
 <% provide(:title, @room.room_name) %>
 <h2><%= @room.room_name %> -<%= @room.room_type.type_name %>- の予約状況</h2>
 
-
 <% today = Date.today %>
 
 <p><%= Date.today.year %></p>
 <p><%= Date.today.month %></p>
 <p><%= Date.today.end_of_month %></p>
-
-
 
 <p><%= today.beginning_of_week(:sunday) %></p>
 <p><%= today.end_of_week(:sunday) %></p>
@@ -21,10 +18,13 @@
     </tr>
   </thead>
   <tbody>
+      <% 1.upto(2).each do |i| %>
     <tr>
       <% (today.beginning_of_week(:sunday)..today.at_end_of_week(:sunday)).each do |d| %>
       <th><%= d.strftime('%d') %><br><p>¥5,000</p></th>
       <% end %>
     </tr>
+    <% today = today + 1.week %>
+<% end %>
   </tbody>
 </table>
