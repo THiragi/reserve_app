@@ -1,16 +1,11 @@
 <% provide(:title, @room.room_name) %>
 <h2><%= @room.room_name %> -<%= @room.room_type.type_name %>- の予約状況</h2>
-
+<div class="content">
+<div class="icon">
+<button class="back">▲</button>
+</div>
 <% today = Date.today %>
-
-<p><%= Date.today.year %></p>
-<p><%= Date.today.month %></p>
-<p><%= Date.today.end_of_month %></p>
-
-<p><%= today.beginning_of_week(:sunday) %></p>
-<p><%= today.end_of_week(:sunday) %></p>
-
-<table>
+<table class="calendar-table">
   <caption><%= today.strftime('%Y年%m月') %></caption>
   <thead>
     <tr>
@@ -20,11 +15,37 @@
   <tbody>
       <% 1.upto(2).each do |i| %>
     <tr>
-      <% (today.beginning_of_week(:sunday)..today.at_end_of_week(:sunday)).each do |d| %>
-      <th><%= d.strftime('%d') %><br><p>¥5,000</p></th>
+      <% (today.beginning_of_week(:sunday)..today.end_of_week(:sunday)).each do |d| %>
+      <th style="font-weight: normal;">
+        <%= d.strftime('%d') %><br><span class="room_rate">¥5,000</span></th>
       <% end %>
     </tr>
     <% today = today + 1.week %>
 <% end %>
   </tbody>
 </table>
+<div class="icon">
+<button class="next">▼</button>
+</div>
+<div class="check_form">
+  <label for="checkin">チェックイン日</label>
+  <input type="date" id="checkin" value="2018-09-18" style="font-size: 15px;"/>
+  <label for="checkout">チェックアウト日</label>
+  <input type="date" id="checkout" value="2018-09-19" style="font-size: 15px;"/>
+  <label for="guest_count">人数</label>
+  <input type="tel" value="1" id="guest_count" maxlength="1" style="width: 40px; font-size: 15px;"/>
+  <input type="submit" id="total" class="btn" value="料金を計算する"/>
+
+  <div id="calc">
+  <span style="font-size:20px;">泊数：</span>
+  <span style="font-size:30px;">1泊</span>
+  <span style="font-size:20px;">人数：</span>
+  <span style="font-size:30px;">1名</span>
+  <span style="font-size:20px;">宿泊料金：</span>
+  <span style="font-size:40px;">5,000円</span>
+  <div>
+    <input type="submit" class="btn" value="他の部屋を探す"/>
+    <input type="submit" class="btn" value="予約者情報を入力する"/>
+  </div>
+  </div>
+</div>

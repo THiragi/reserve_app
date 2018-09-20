@@ -17,15 +17,19 @@
 /* rooms */
 .container {
   width: 940px;
-  margin-left: 36px;
+  margin: 0 auto;
+}
+.content {
+  width: 800px;
+  margin: 0 auto;
 }
 h2 {
   border-bottom: 2px solid #000;
 }
-strong {
+.room_set strong {
   font-size: 18px;
 }
-td {
+.room_set td {
   text-align: center;
   border-radius: 16px;
   border:2px solid black;
@@ -33,7 +37,7 @@ td {
   height:82px;
   empty-cells: hide;
 }
-td:hover {
+.room_set td:hover {
   background: lightblue;
 }
 .room_list {
@@ -54,3 +58,41 @@ td:hover {
 }
 
 /* calendar */
+.calendar-table {
+  margin: 0 auto;
+  font-size: 20px;
+  border-bottom: 1px solid dimgray;
+}
+.calendar-table caption {
+  text-align: left;
+  font-size: 24px;
+  border-bottom: 1px solid dimgray;
+}
+
+.calendar-table th {
+  width: 110px;
+  height: 90px;
+}
+
+.calendar-table th:nth-of-type(1) {
+  color: #dc6b9a;
+}
+.calendar-table th:nth-of-type(7) {
+  color: #4496d3;
+}
+.room_rate {
+  color: black;
+}
+.icon {
+  text-align: center;
+  margin-top: 32px;
+}
+.icon button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #bee0ce;
+  color: white;
+  border-style: none;
+
+}
