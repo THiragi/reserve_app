@@ -5,6 +5,7 @@
 <button class="back">▲</button>
 </div>
 <% today = Date.today %>
+<% bday = today.beginning_of_week(:sunday) %>
 <table class="calendar-table">
   <caption><%= today.strftime('%Y年%m月') %></caption>
   <thead>
@@ -13,17 +14,28 @@
     </tr>
   </thead>
   <tbody>
-      <% 1.upto(2).each do |i| %>
+      <% (bday..bday.weeks_since(3)-1).each do |d| %>
+      <% if d.wday == 0 %>
     <tr>
-      <% (today.beginning_of_week(:sunday)..today.end_of_week(:sunday)).each do |d| %>
-      <th style="font-weight: normal;">
-        <%= d.strftime('%d') %><br><span class="room_rate">¥5,000</span></th>
       <% end %>
+      <%
+        date_classes = []
+        date_classes << "past" if d < today
+        date_classes << "sunday" if d.wday == 0
+        date_classes << "saturday" if d.wday == 6
+        date_classes << "current" if d == today
+      %>
+      <td class="<%= date_classes.join(" ") %>">
+        <%= d.day %><br><span>¥5,000</span></td>
+      <% if d.wday == 6 %>
     </tr>
-    <% today = today + 1.week %>
-<% end %>
+      <% end %>
+      <% end %>
   </tbody>
 </table>
+
+
+
 <div class="icon">
 <button class="next">▼</button>
 </div>
