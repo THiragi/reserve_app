@@ -6,6 +6,8 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @today = Date.today
+    @start = @today.beginning_of_week(:sunday)
   end
 
 end
