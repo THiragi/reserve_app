@@ -26,7 +26,14 @@
         date_classes << "current" if d == @today
       %>
       <td class="<%= date_classes.join(" ") %>">
-        <%= d.day %><br><span>¥5,000</span></td>
+        <%= d.day %><br>
+        <% rate = @rates.find_by('start_date <= ? AND end_date >= ?', d, d) %>
+        <% if rate == nil %>
+          <p>×</p>
+          <% else %>
+          <%= rate.amount %>
+        <% end%>
+      </td>
       <% if d.wday == 6 %>
     </tr>
       <% end %>
@@ -38,15 +45,9 @@
 <button class="next">▼</button>
 </div>
 
-<% t = @today %>
+<% t = @today + 5 %>
 <%= t %>
 
-  <ul>
-    <% @rates.each do |rate| %>
-    <li><%= rate.start_date..rate.end_date %></li>
-    <% end %>
-  </ul>
-  <%= @rates.minimum('rank') %>
 
 <div class="check_form">
   <label for="checkin">チェックイン日</label>
