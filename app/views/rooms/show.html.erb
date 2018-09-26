@@ -37,6 +37,17 @@
 <div class="icon">
 <button class="next">▼</button>
 </div>
+
+<% t = @today %>
+<%= t %>
+
+  <ul>
+    <% @rates.each do |rate| %>
+    <li><%= rate.start_date..rate.end_date %></li>
+    <% end %>
+  </ul>
+  <%= @rates.minimum('rank') %>
+
 <div class="check_form">
   <label for="checkin">チェックイン日</label>
   <input type="date" id="checkin" value="2018-09-18" style="font-size: 15px;"/>
