@@ -1,0 +1,54 @@
+<table class="calendar-table">
+  <% today = Date.today %>
+  <caption ><%= start.strftime('%Y年%m月') %></caption>
+  <thead>
+    <tr>
+      <th style="color: #dc6b9a;">日</th>
+      <th>月</th>
+      <th>火</th>
+      <th>水</th>
+      <th>木</th>
+      <th>金</th>
+      <th style="color: #4496d3;">土</th>
+    </tr>
+  </thead>
+  <tbody>
+
+      <% (start..start.weeks_since(2)-1).each do |d| %>
+      <% if d.wday == 0 %>
+    <tr>
+      <% end %>
+      <%
+        date_classes = []
+        date_classes << "past" if d < today
+        date_classes << "sunday" if d.wday == 0
+        date_classes << "saturday" if d.wday == 6
+        date_classes << "current" if d == today
+      %>
+      <td class="<%= date_classes.join(" ") %>">
+        <%= d.day %><br>
+
+        <%# その日が期間（start_date..end_date）に含まれている
+            あるいは曜日（weekday）が当てはまっている@ratesを探す%>
+        <% rates = @rates.where('start_date <= ? AND end_date >= ? OR weekday == ?', d, d, d.wday) %>
+        <%# 結果がnilの場合は"-"を返す %>
+        <% if rates == nil %>
+          <p>-</p>
+        <% else %>
+        <%# 探した中で一番数字の小さい@ratesの'rank:'を探す %>
+          <% r = rates.minimum('rank') %>
+          <%# 結果がnilの場合は"-"を返す %>
+            <% if r == nil %>
+              <p>-</p>
+            <% else %>
+              <%# 'rank:'の一番小さい@ratesの'amount:'を表示する %>
+              <%= rates.find_by(rank: r).amount %>
+            <% end %>
+        <% end%>
+      </td>
+      <% if d.wday == 6 %>
+    </tr>
+      <% end %>
+      <% end %>
+  </tbody>
+</table>

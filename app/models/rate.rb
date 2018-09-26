@@ -4,4 +4,9 @@ class Rate < ApplicationRecord
   validates :amount, presence: true
   validates :rank, presence: true
   validates :room_type_id, presence: true
+
+ def self.get_amount(room_type_id, date)
+
+ end
+
 end
