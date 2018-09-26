@@ -41,13 +41,13 @@
         <% if rates == nil %>
           <p>-</p>
         <% else %>
-        <%# 探した中で一番'rank:'の数字が小さい@ratesを探す %>
+        <%# 探した中で一番数字の小さい@ratesの'rank:'を探す %>
           <% r = rates.minimum('rank') %>
           <%# 結果がnilの場合は"-"を返す %>
             <% if r == nil %>
               <p>-</p>
             <% else %>
-              
+              <%# 'rank:'の一番小さい@ratesの'amount:'を表示する %>
               <%= rates.find_by(rank: r).amount %>
             <% end %>
         <% end%>
