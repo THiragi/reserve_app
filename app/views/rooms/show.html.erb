@@ -3,13 +3,19 @@
 <div class="content">
 
 <div class="icon">
-<button class="back">▲</button>
+<%= link_to "▲", @rooms, method: :get%>
 </div>
 <table class="calendar-table">
-  <caption><%= @start.strftime('%Y年%m月') %></caption>
+  <caption id="ymw" data-ymw-id="<%= @start %>"><%= @start.strftime('%Y年%m月') %></caption>
   <thead>
     <tr>
-      <th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th>
+      <th style="color: #dc6b9a;">日</th>
+      <th>月</th>
+      <th>火</th>
+      <th>水</th>
+      <th>木</th>
+      <th>金</th>
+      <th style="color: #4496d3;">土</th>
     </tr>
   </thead>
   <tbody>
@@ -27,11 +33,23 @@
       %>
       <td class="<%= date_classes.join(" ") %>">
         <%= d.day %><br>
-        <% rate = @rates.find_by('start_date <= ? AND end_date >= ?', d, d) %>
-        <% if rate == nil %>
-          <p>×</p>
-          <% else %>
-          <%= rate.amount %>
+
+        <%# その日が期間（start_date..end_date）に含まれている
+            あるいは曜日（weekday）が当てはまっている@ratesを探す%>
+        <% rates = @rates.where('start_date <= ? AND end_date >= ? OR weekday == ?', d, d, d.wday) %>
+        <%# 結果がnilの場合は"-"を返す %>
+        <% if rates == nil %>
+          <p>-</p>
+        <% else %>
+        <%# 探した中で一番'rank:'の数字が小さい@ratesを探す %>
+          <% r = rates.minimum('rank') %>
+          <%# 結果がnilの場合は"-"を返す %>
+            <% if r == nil %>
+              <p>-</p>
+            <% else %>
+              
+              <%= rates.find_by(rank: r).amount %>
+            <% end %>
         <% end%>
       </td>
       <% if d.wday == 6 %>
@@ -42,7 +60,7 @@
 </table>
 
 <div class="icon">
-<button class="next">▼</button>
+<%= link_to "▼", @rooms, method: :get%>
 </div>
 
 <% t = @today + 5 %>

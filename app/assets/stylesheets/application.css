@@ -103,12 +103,6 @@ td[class^="past"] {
   text-align: center;
   margin-top: 32px;
 }
-.icon button {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #bee0ce;
-  color: white;
-  border-style: none;
-
+.icon a {
+  color: #bee0ce;
 }
