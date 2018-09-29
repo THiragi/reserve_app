@@ -8,15 +8,19 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @room_type = @room.room_type
     @start = Date.today.beginning_of_week(:sunday)
-    @rates = Rate.where(room_type_id: @room_type.id)
+
   end
 
   def prev
-
+    @start = Date.parse(params[:date]).weeks_ago(2)
+    render partial: 'calendar', locals: {start: @start, room_type: @room_type}
   end
 
   def next
-    
+    @start = Date.parse(params[:date]).weeks_since(2)
+    render partial: 'calendar', locals: {start: @start, room_type: @room_type}
   end
+
+
 
 end

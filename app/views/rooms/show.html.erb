@@ -2,17 +2,23 @@
 <h2><%= @room.room_name %> -<%= @room.room_type.type_name %>- の予約状況</h2>
 <div class="content">
 
-<div class="icon">
-<%= button_to "▲", {action: :prev}, class: "arrow" %>
-</div>
+  <div id="prev_weeks">
+    <%= form_tag(rooms_prev_path, method: :post) do %>
+      <%= hidden_field_tag :date, @start %>
+      <%= submit_tag "▲", class: "arrow" %>
+    <% end %>
+  </div>
 
-<div id="calendar-area">
-  <%= render partial: 'calendar', locals: {start: @start}%>
-</div>
+  <div id="calendar-area">
+    <%= render partial: 'calendar', locals: {start: @start, room_type: @room_type}%>
+  </div>
 
-<div class="icon">
-<%= button_to "▼", {action: :next}, class:"arrow" %>
-</div>
+  <div id="next_weeks">
+    <%= form_tag(rooms_next_path, method: :post) do %>
+      <%= hidden_field_tag :date, @start %>
+      <%= submit_tag "▼", class: "arrow" %>
+    <% end %>
+  </div>
 
 
 

@@ -99,7 +99,7 @@ td[class^="past"] {
 .room_rate {
   color: black;
 }
-.icon {
+#prev_weeks, #next_weeks {
   text-align: center;
   margin-top: 32px;
 }
@@ -115,4 +115,7 @@ td[class^="past"] {
   border: none;
   color: white;
   background: #bee0ce;
+}
+.check_form {
+  margin: 30px 0;
 }
