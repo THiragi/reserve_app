@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root 'rooms#index'
   resources :reservations
   resources :room_types
-  resources :rooms
-  post 'rooms/prev', to: 'rooms#prev', as: 'rooms_prev'
-  post 'rooms/next', to: 'rooms#next', as: 'rooms_next'
+  resources :rooms do
+    member do
+      post :prev, :next
+    end
+  end
+
 end
