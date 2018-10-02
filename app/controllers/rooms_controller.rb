@@ -12,19 +12,24 @@ class RoomsController < ApplicationController
   end
 
   def prev
-    @room = Room.find(params[:id])
-    @room_type = @room.room_type
+#    @room = Room.find(params[:id])
+#    @room_type = @room.room_type
     @start = Date.parse(params[:date]).weeks_ago(2)
-    render 'show'
-#    render partial: 'calendar', locals: {start: @start, room_type: @room_type}
+#    render 'show'
+    render partial: 'calendar', locals: {start: @start, room_type: @room_type}
+#    respond_to do |format|
+#      format.html
+#      format.js
+#    end
+
   end
 
   def next
-    @room = Room.find(params[:id])
-    @room_type = @room.room_type
+#    @room = Room.find(params[:id])
+#    @room_type = @room.room_type
     @start = Date.parse(params[:date]).weeks_since(2)
-    render 'show'
-#    render partial: 'calendar', locals: {start: @start, room_type: @room_type}
+#    render 'show'
+    render partial: 'calendar', locals: {start: @start, room_type: @room_type}
   end
 
 

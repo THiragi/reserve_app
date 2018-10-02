@@ -1,11 +1,11 @@
 <% provide(:title, @room.room_name) %>
 <h2><%= @room.room_name %> -<%= @room.room_type.type_name %>- の予約状況</h2>
 <div class="content">
-
+<% current = @start %>
   <div id="prev_weeks">
     <%= form_tag({ controller: :rooms, action: :prev},
-      { method: :post }) do %>
-      <%= hidden_field_tag :date, @start %>
+      { method: :post, remote: true }) do %>
+      <%= hidden_field_tag :date, current %>
       <%= submit_tag "▲", class: "arrow" %>
     <% end %>
   </div>
@@ -16,8 +16,8 @@
 
   <div id="next_weeks">
     <%= form_tag({ controller: :rooms, action: :next},
-      { method: :post }) do %>
-      <%= hidden_field_tag :date, @start %>
+      { method: :post, remote: true }) do %>
+      <%= hidden_field_tag :date, current %>
       <%= submit_tag "▼", class: "arrow" %>
     <% end %>
   </div>
