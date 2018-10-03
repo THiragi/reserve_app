@@ -14,7 +14,10 @@ class RoomsController < ApplicationController
   def prev
     @room = Room.find(params[:id])
     @room_type = @room.room_type
+#    Rails.logger.debug("##################")
+#    Rails.logger.debug(params[:date])
     @start = Date.parse(params[:date]).weeks_ago(2)
+#    Rails.logger.debug(@start)
 #    render 'show'
     render partial: 'calendar', locals: {start: @start, room_type: @room_type}
 #    respond_to do |format|
