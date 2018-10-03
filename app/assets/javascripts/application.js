@@ -15,27 +15,3 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-
-
-
-$(function(){
-
-
-
-  $('#prev_weeks').on('click', function(){
-      $.ajax({
-          url: '/rooms' + id + '/prev',
-          type:'POST',
-          data:{
-            date: $('#date').val()
-          },
-      })
-      .done(function(data){
-        $('#calendar-area').html(data);
-      })
-      .fail(function(data){
-        alert('error!');
-      });
-  });
-
-});
