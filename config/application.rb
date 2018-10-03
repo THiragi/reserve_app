@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# config.web_console.whitelisted_ips = '192.168.66.1'
+
 module ReserveApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
