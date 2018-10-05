@@ -1,6 +1,6 @@
 <div id="prev_weeks">
   <%= form_tag({ controller: :rooms, action: :prev},
-    { method: :post, remote: true }) do %>
+    { method: :post }) do %>
     <%= hidden_field_tag :date, start %>
     <%= submit_tag "▲", class: "arrow" %>
   <% end %>
@@ -51,7 +51,7 @@
 
 <div id="next_weeks">
   <%= form_tag({ controller: :rooms, action: :next},
-    { method: :post, remote: true }) do %>
+    { method: :post }) do %>
     <%= hidden_field_tag :date, start %>
     <%= submit_tag "▼", class: "arrow" %>
   <% end %>

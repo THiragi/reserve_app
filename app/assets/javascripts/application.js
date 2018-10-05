@@ -17,10 +17,12 @@
 //= require_tree .
 
 
-/*
+
 $(function(){
 
-  $('#prev_weeks').on('click', function(){
+  $(document).on('ajax:complete','#prev_weeks', function(event){
+    var response;
+    response = event.detail[0].response;
       $.ajax({
           url: '/rooms/' + id + '/prev',
           type:'POST',
@@ -28,13 +30,11 @@ $(function(){
             date: $('#date').val()
           },
       })
-      .done(function(data){
-        $('#calendar-area').html(data);
+      .done(function(respose){
+        $('#calendar-area').html(respose);
       })
       .fail(function(){
         alert('error!');
       });
   });
-
 });
-*/

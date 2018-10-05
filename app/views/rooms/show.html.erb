@@ -2,12 +2,9 @@
 <h2><%= @room.room_name %> -<%= @room.room_type.type_name %>- の予約状況</h2>
 <div class="content">
 
-
   <div id="calendar-area">
     <%= render partial: 'calendar', locals: {start: @start, room_type: @room_type}%>
   </div>
-
-
 
 <div class="check_form">
   <label for="checkin">チェックイン日</label>
