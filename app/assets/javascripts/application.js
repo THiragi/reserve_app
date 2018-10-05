@@ -20,18 +20,16 @@
 
 $(function(){
 
-  $(document).on('ajax:complete','#prev_weeks', function(event){
-    var response;
-    response = event.detail[0].response;
+  $(document).on('click','#prev_weeks', function(event){
       $.ajax({
           url: '/rooms/' + id + '/prev',
-          type:'POST',
+          type: 'POST',
           data:{
             date: $('#date').val()
           },
       })
-      .done(function(respose){
-        $('#calendar-area').html(respose);
+      .done(function(data){
+        $('#calendar-area').html(data);
       })
       .fail(function(){
         alert('error!');

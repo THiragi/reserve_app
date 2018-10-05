@@ -1,14 +1,10 @@
-<div id="prev_weeks">
-  <%= form_tag({ controller: :rooms, action: :prev},
-    { method: :post }) do %>
-    <%= hidden_field_tag :date, start %>
-    <%= submit_tag "▲", class: "arrow" %>
-  <% end %>
-</div>
+<% today = Date.today %>
 
+<button id="prev_weeks">
+  <%= hidden_field_tag :date, start %>
+  ▲
+</button>
 <table class="calendar-table">
-  <% today = Date.today %>
-
   <caption ><%= start.strftime('%Y年%m月') %></caption>
   <thead>
     <tr>
