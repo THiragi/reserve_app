@@ -45,10 +45,7 @@
   </tbody>
 </table>
 
-<div id="next_weeks">
-  <%= form_tag({ controller: :rooms, action: :next},
-    { method: :post }) do %>
-    <%= hidden_field_tag :date, start %>
-    <%= submit_tag "▼", class: "arrow" %>
-  <% end %>
-</div>
+<button id="next_weeks">
+  <%= hidden_field_tag :date, start %>
+  ▼
+</button>

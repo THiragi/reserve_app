@@ -16,23 +16,40 @@
 //= require turbolinks
 //= require_tree .
 
-
-
 $(function(){
+
+  var id = $('#room-id').data('room-id');
 
   $(document).on('click','#prev_weeks', function(event){
       $.ajax({
           url: '/rooms/' + id + '/prev',
-          type: 'POST',
+          type:'POST',
           data:{
             date: $('#date').val()
           },
       })
-      .done(function(data){
-        $('#calendar-area').html(data);
+      .done(function(respose){
+        $('#calendar-area').html(respose);
       })
       .fail(function(){
         alert('error!');
       });
   });
+
+  $(document).on('click','#next_weeks', function(event){
+      $.ajax({
+          url: '/rooms/' + id + '/next',
+          type:'POST',
+          data:{
+            date: $('#date').val()
+          },
+      })
+      .done(function(respose){
+        $('#calendar-area').html(respose);
+      })
+      .fail(function(){
+        alert('error!');
+      });
+  });
+
 });
