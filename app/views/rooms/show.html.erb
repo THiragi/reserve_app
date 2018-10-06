@@ -1,5 +1,5 @@
-<input type="hidden" id="room-id" data-room-id="<%= @room.id %>"/>
 <% provide(:title, @room.room_name) %>
+<input type="hidden" id="room-id" data-room-id="<%= @room.id %>"/>
 <h2><%= @room.room_name %> -<%= @room.room_type.type_name %>- の予約状況</h2>
 <div class="content">
 
@@ -9,9 +9,9 @@
 
 <div class="check_form">
   <label for="checkin">チェックイン日</label>
-  <input type="date" id="checkin" value="2018-09-18" style="font-size: 15px;"/>
+  <input type="date" id="checkin" value="nil" style="font-size: 15px;"/>
   <label for="checkout">チェックアウト日</label>
-  <input type="date" id="checkout" value="2018-09-19" style="font-size: 15px;"/>
+  <input type="date" id="checkout" value="nil" style="font-size: 15px;"/>
   <label for="guest_count">人数</label>
   <input type="tel" value="1" id="guest_count" maxlength="1" style="width: 40px; font-size: 15px;"/>
   <input type="submit" id="total" class="btn" value="料金を計算する"/>
