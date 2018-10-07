@@ -32,7 +32,6 @@
       <% end %>
       <%
         date_classes = []
-        date_classes << "pmonth" if d.month != today.month
         date_classes << "past" if d < today
         date_classes << "sunday" if d.wday == 0
         date_classes << "saturday" if d.wday == 6
