@@ -1,6 +1,7 @@
 <% provide(:title, @room.room_name) %>
+<% today = Date.today %>
 <input type="hidden" id="room-id" data-room-id="<%= @room.id %>"/>
-<h2><%= @room.room_name %> -<%= @room.room_type.type_name %>- の予約状況</h2>
+<h2><%= @room.room_name %> -<%= @room_type.type_name %>- の予約状況</h2>
 <div class="content">
 
   <div id="calendar-area">
@@ -8,24 +9,16 @@
   </div>
 
 <div class="check_form">
-  <label for="checkin">チェックイン日</label>
-  <input type="date" id="checkin" value="nil" style="font-size: 15px;"/>
-  <label for="checkout">チェックアウト日</label>
-  <input type="date" id="checkout" value="nil" style="font-size: 15px;"/>
-  <label for="guest_count">人数</label>
-  <input type="tel" value="1" id="guest_count" maxlength="1" style="width: 40px; font-size: 15px;"/>
-  <input type="submit" id="total" class="btn" value="料金を計算する"/>
-
-  <div id="calc">
-  <span style="font-size:20px;">泊数：</span>
-  <span style="font-size:30px;">1泊</span>
-  <span style="font-size:20px;">人数：</span>
-  <span style="font-size:30px;">1名</span>
-  <span style="font-size:20px;">宿泊料金：</span>
-  <span style="font-size:40px;">5,000円</span>
-  <div>
-    <input type="submit" class="btn" value="他の部屋を探す"/>
-    <input type="submit" class="btn" value="予約者情報を入力する"/>
+  <div class="date_form">
+    <label for="checkin">チェックイン日：</label>
+    <input type="date" name="checkin[]" id="checkin" min="<%= today %>" max="<%= today.years_since(3) %>"/>
+    <label for="checkout">チェックアウト日：</label>
+    <input type="date" name="checkout[]" id="checkout"/>
+    <label for="guest_count">人数：</label>
+    <input type="number" name="guestcount[]" id="guest_count" min="1" max="<%= @room_type.capacity %>" style="width: 28px;"/><span>人</span>
   </div>
+  <input type="button" id="calc" class="btn" value="料金を計算する"/>
+
+  <div id="total">
   </div>
 </div>

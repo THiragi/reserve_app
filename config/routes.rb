@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :room_types
   resources :rooms do
     member do
-      post :prev, :next
+      post :prev, :next, :calc
     end
   end
 

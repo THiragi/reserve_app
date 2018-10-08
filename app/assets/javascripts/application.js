@@ -20,6 +20,26 @@ $(function(){
 
   var id = $('#room-id').data('room-id');
 
+//Room rate Calculator
+
+  $('#calc').on('click', function(){
+      $.ajax({
+          url: '/rooms/' + id + '/calc',
+          type: 'POST',
+          data:{
+            guestcount: $('#guest_count').get(0),
+          },
+      })
+      .done(function(data){
+        $('#total').html(data);
+      })
+      .fail(function(){
+        alert('error!');
+      });
+  });
+
+//Calendar -Week Transition-
+
   $(document).on('click','#prev_weeks', function(event){
       $.ajax({
           url: '/rooms/' + id + '/prev',
