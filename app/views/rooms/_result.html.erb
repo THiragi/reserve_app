@@ -1,5 +1,8 @@
 
-<p>チェックイン日：<%= @in_date %></p>
-<p>チェックアウト日：<%= @out_date %></p>
+
+<% duration = @in_date..@out_date %>
+
+<p>泊数：<%= duration.count - 1 %>泊</p>
 <p>人数：<%= @guest_count %>人</p>
+
 <input type="button" class="btn" value="予約者情報を入力する"/>
