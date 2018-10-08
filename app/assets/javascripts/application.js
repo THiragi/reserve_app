@@ -20,14 +20,17 @@ $(function(){
 
   var id = $('#room-id').data('room-id');
 
-//Room rate Calculator
+  //Room rate Calculator
 
   $('#calc').on('click', function(){
+
       $.ajax({
           url: '/rooms/' + id + '/calc',
           type: 'POST',
           data:{
-            guestcount: $('#guest_count').get(0),
+            guestcount: $('#guest_count').val(),
+            checkin: $('#checkin').val(),
+            checkout: $('#checkout').val()
           },
       })
       .done(function(data){
@@ -36,9 +39,10 @@ $(function(){
       .fail(function(){
         alert('error!');
       });
+
   });
 
-//Calendar -Week Transition-
+  //Calendar -Week Transition-
 
   $(document).on('click','#prev_weeks', function(event){
       $.ajax({

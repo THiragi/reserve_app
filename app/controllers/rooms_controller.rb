@@ -30,7 +30,7 @@ class RoomsController < ApplicationController
   end
 
   def calc
-    @checkin = Date.parse(params[:checkin])
+    @in_date = Date.parse(params[:checkin])
     @out_date = Date.parse(params[:checkout])
     @guest_count = params[:guestcount]
 #    @per_stays = out_date - in_date
