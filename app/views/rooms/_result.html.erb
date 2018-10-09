@@ -1,8 +1,10 @@
 
-
-<% duration = @in_date..@out_date %>
-
-<p>泊数：<%= duration.count - 1 %>泊</p>
-<p>人数：<%= @guest_count %>人</p>
-
+<% duration = @in_date..@out_date.days_ago(1) %>
+<span>泊数：<%= duration.count %>泊</span>
+<span>人数：<%= @guest_count %>人</span>
+<% total = 0 %>
+<% duration.each do |d| %>
+  <% total += Rate.get_amount(room_type, d).amount %>
+<% end %>
+<span>宿泊料 合計：<%= total %>円</span>
 <input type="button" class="btn" value="予約者情報を入力する"/>

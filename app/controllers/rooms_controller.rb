@@ -30,6 +30,8 @@ class RoomsController < ApplicationController
   end
 
   def calc
+    @room = Room.find(params[:id])
+    @room_type = @room.room_type
     @in_date = Date.parse(params[:checkin])
     @out_date = Date.parse(params[:checkout])
     @guest_count = params[:guestcount]
