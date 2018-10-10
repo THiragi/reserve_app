@@ -1,0 +1,28 @@
+<% provide(:title) %>
+<h2>宿泊予約申請フォーム</h2>
+<div class="reserve_form">
+
+  <p>予約者情報を入力してください<span style="color: red;">*必須</span></p>
+<ul>
+  <%= form_for(@reservation) do |f| %>
+  <li>
+    <%= f.label :guest_name %>
+    <%= f.text_field :guest_name %>
+  </li>
+  <li>
+    <%= f.label :guest_mail %>
+    <%= f.text_field :guest_mail %>
+  </li>
+  <li>
+    <%= f.label :guest_phone %>
+    <%= f.text_field :guest_phone %>
+  </li>
+  <li>
+    <%= f.label :stay_note %>
+    <%= f.text_area :stay_note %>
+  </li>
+</ul>
+    <%= f.submit "予約を申請する" %>
+
+  <% end %>
+</div>

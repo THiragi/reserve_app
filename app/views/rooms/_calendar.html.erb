@@ -42,7 +42,7 @@
         <% if Rate.get_amount(room_type, d) == nil  %>
           <span>-</span>
         <% else %>
-          <span><%= Rate.get_amount(room_type, d).amount %></span>
+          <span><%= Rate.get_amount(room_type, d).amount.to_s(:delimited) %>円</span>
         <% end %>
       </td>
       <% if d.wday == 6 %>
