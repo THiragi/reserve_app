@@ -8,4 +8,7 @@
 <% end %>
 <span>宿泊料 合計：<strong><%= total.to_s(:delimited) %><strong> 円</span>
 </div>
-<input type="button" class="btn" value="予約者情報を入力する"/>
+<%= form_for(new_reservation_path) do |f| %>
+
+  <% f.submit "予約者情報を入力する" %>
+<% end %>

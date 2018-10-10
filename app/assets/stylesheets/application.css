@@ -156,16 +156,25 @@ input[type="button"] {
   font-size: 30px;
 }
 
-.reserve_form li {
+.reserve_form {
   font-size: 20px;
+}
+
+.reserve_form li {
   padding: 5px 0;
   display: flex;
 }
 
 .reserve_form label {
-  width: 180px;
+  width: 200px;
 }
 
-.reserve_form input {
+.reserve_form input[type="text"] {
   width: 360px;
+}
+
+.reserve_form textarea {
+  resize: none;
+  width: 360px;
+  height: 120px;
 }

@@ -36,7 +36,7 @@ class RoomsController < ApplicationController
     @out_date = Date.parse(params[:checkout])
     @guest_count = params[:guestcount]
 #    @per_stays = out_date - in_date
-    render partial: 'result',  locals: {start: @start, room_type: @room_type}
+    render partial: 'result',  locals: {start: @start, room: @room, room_type: @room_type}
   end
 
 
