@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :reservations do
     new do
       match 'apply', via: [:get, :post]
+      post 'confirm'
     end
   end
   resources :room_types
