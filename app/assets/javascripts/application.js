@@ -18,8 +18,30 @@
 
 $(function(){
 
-  var id = $('#room-id').data('room-id');
 
+
+  $('#checkin').focusout(function(e) {
+    var checkin = $('#checkin').val();
+    if (checkin != ''){
+      if (new Date(checkin) <= new Date()){
+        alert('今日より前の日付は選択できません');
+        $('#checkin').eq(0).focus();
+      }
+    }
+  });
+
+  $('#checkout').focusout(function(e) {
+    var checkin = $('#checkin').val();
+    var checkout = $('#checkout').val();
+    if (checkout != ''){
+      if (new Date(checkout) <= new Date(checkin)){
+        alert('チェックイン日より前の日付は選択できません');
+        $('#checkout').eq(0).focus();
+      }
+    }
+  });
+
+  var id = $('#room-id').data('room-id');
   //Room rate Calculator
 
   $('#calc').on('click', function(){
