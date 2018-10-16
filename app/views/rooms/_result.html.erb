@@ -8,10 +8,9 @@
 <% end %>
 <span>宿泊料 合計：<strong><%= total.to_s(:delimited) %><strong> 円</span>
 </div>
-
+<%= room.id %>
 <%= form_for(@reservation, url: { controller: :reservations, action: :apply}) do |f| %>
-  <%= f.hidden_field :roomname, value: room.room_name %>
-  <%= f.hidden_field :roomtype, value: room_type.type_name %>
+  <%= f.hidden_field :room_id, value: room.id %>
   <%= f.hidden_field :checkin, value: @in_date %>
   <%= f.hidden_field :checkout, value: @out_date %>
   <%= f.hidden_field :guestcount, value: @guest_count %>

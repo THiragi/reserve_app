@@ -1,8 +1,7 @@
 class ReservationsController < ApplicationController
   def apply
     @reservation = Reservation.new
-    @room_name = params[:reservation][:roomname]
-    @room_type = params[:reservation][:roomtype]
+    @room_id = params[:reservation][:room_id]
     @guest_count = params[:reservation][:guestcount]
     @amount = params[:reservation][:amount]
     @in_date = Date.parse(params[:reservation][:checkin])

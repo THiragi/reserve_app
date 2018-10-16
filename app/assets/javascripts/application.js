@@ -20,23 +20,29 @@ $(function(){
 
 
 
-  $('#checkin').focusout(function(e) {
+  $('#checkin').blur(function() {
     var checkin = $('#checkin').val();
     if (checkin != ''){
       if (new Date(checkin) <= new Date()){
         alert('今日より前の日付は選択できません');
-        $('#checkin').eq(0).focus();
+        setTimeout(function() {
+            $('#checkin').focus();
+            $('#checkin').select();
+        }, 1);
       }
     }
   });
 
-  $('#checkout').focusout(function(e) {
+  $('#checkout').blur(function() {
     var checkin = $('#checkin').val();
     var checkout = $('#checkout').val();
     if (checkout != ''){
       if (new Date(checkout) <= new Date(checkin)){
         alert('チェックイン日より前の日付は選択できません');
-        $('#checkout').eq(0).focus();
+        setTimeout(function() {
+            $('#checkout').focus();
+            $('#checkout').select();
+        }, 1);
       }
     }
   });
