@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  def apply
+  def new
     @reservation = Reservation.new
     @room_id = params[:reservation][:room_id]
     @guest_count = params[:reservation][:guestcount]

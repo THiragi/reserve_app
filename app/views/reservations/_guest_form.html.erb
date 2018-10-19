@@ -1,0 +1,24 @@
+<div class="reserve_form">
+<p>予約者情報を入力してください<span style="color: red;">*必須</span></p>
+    <% letters = ('a'..'z').to_a %>
+    <% l = letters.sample(4).join %>
+    <% n = sprintf('%08d', Reservation.count + 1) %>
+    <%= f.hidden_field :reserve_no, value: l + n %>
+    <div>
+        <%= f.label :guest_name, "予約者名*" %>
+        <%= f.text_field :guest_name %>
+    </div>
+    <div>
+        <%= f.label :guest_mail, "メールアドレス*" %>
+        <%= f.text_field :guest_mail %>
+    </div>
+    <div>
+        <%= f.label :guest_phone, "電話番号*" %>
+        <%= f.text_field :guest_phone %>
+    </div>
+    <div>
+        <%= f.label :stay_note, "備考" %>
+        <%= f.text_area :stay_note %>
+    </div>
+
+</div>

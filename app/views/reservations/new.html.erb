@@ -1,53 +1,19 @@
 <% provide(:title) %>
+
 <h2>宿泊予約申請フォーム</h2>
-<div class="reserve_form">
 
-  <p>予約者情報を入力してください<span style="color: red;">*必須</span></p>
-<ul>
-  <%= form_for(@reservation) do |f| %>
-  <li>
-    <%= f.label :guest_name, "予約者名" %>
-    <%= f.text_field :guest_name %>
-  </li>
-  <li>
-    <%= f.label :guest_mail, "メールアドレス" %>
-    <%= f.text_field :guest_mail %>
-  </li>
-  <li>
-    <%= f.label :guest_phone, "電話番号" %>
-    <%= f.text_field :guest_phone %>
-  </li>
-  <li>
-    <%= f.label :stay_note, "備考" %>
-    <%= f.text_area :stay_note %>
-  </li>
-</ul>
-<p>予約内容</p>
-<ul>
-  <li>
-    <%= f.label :room_id, "宿泊室名" %><span></span>
-    <%= f.hidden_field :room_id %>
-  </li>
-  <li>
-    <%= f.label :check_in_date, "チェックイン日" %><span></span>
-    <%= f.hidden_field :check_in_date %>
-  </li>
-  <li>
-    <%= f.label :check_out_date, "チェックアウト日" %><span></span>
-    <%= f.hidden_field :check_out_date %>
-  </li>
-  <li>
-    <label>泊数</label><span>１泊</span>
-  </li>
-  <li>
-    <%= f.label :guest_count, "宿泊人数" %><span></span>
-    <%= f.hidden_field :guest_count %>
-  </li>
-  <li>
-    <label>宿泊料金</label><span>5,200円</span>
-  </li>
-</ul>
+
+<%= form_for(@reservation) do |f| %>
+    <div class="form_list">
+    <%= render 'guest_form', f: f %>
+    <div style="display: none">
+    <%= render 'stay_form', f: f %>
+    </div>
+    <input type="button" value="確認する" id="sendConfirm"/>
+    </div>
+    <div class="confirm_list" style="display: none">
+    <%= render 'confirm' %>
+    <input type="button" value="変更する" id="editConfirm"/>
     <%= f.submit "予約を申請する" %>
-
-  <% end %>
-</div>
+    </div>
+<% end %>
