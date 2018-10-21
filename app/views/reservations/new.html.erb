@@ -1,19 +1,22 @@
 <% provide(:title) %>
 
 <h2>宿泊予約申請フォーム</h2>
+<% letters = ('a'..'z').to_a %>
+<% l = letters.sample(4).join %>
+<% n = sprintf('%08d', Reservation.count + 1) %>
 
-
-<%= form_for(@reservation) do |f| %>
+<%= form_for @reservation do |f| %>
+  <%= f.hidden_field :reserve_no, value: l + n %>
     <div class="form_list">
-    <%= render 'guest_form', f: f %>
+      <%= render 'guest_form', f: f %>
     <div style="display: none">
-    <%= render 'stay_form', f: f %>
+      <%= render 'stay_form', f: f %>
     </div>
-    <input type="button" value="確認する" id="sendConfirm"/>
+      <input type="button" value="確認する" id="sendConfirm"/>
     </div>
     <div class="confirm_list" style="display: none">
-    <%= render 'confirm' %>
-    <input type="button" value="変更する" id="editConfirm"/>
-    <%= f.submit "予約を申請する" %>
+      <%= render 'confirm' %>
+      <input type="button" value="変更する" id="editConfirm"/>
+      <%= f.submit "予約を申請する" %>
     </div>
 <% end %>

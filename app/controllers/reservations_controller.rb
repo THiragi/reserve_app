@@ -9,9 +9,17 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new
+    @reservation = Reservation.new(reservation_params)
+    if @reservation.save
+      redirect_to root_url
+    end  
   end
 
   def destroy
   end
+
+  private
+    def reservation_params
+      params.require(:reservation).permit(:reserve_no, :guest_name, :guest_mail, :guest_phone, :check_in_date, :check_out_date, :room_id, :guest_count, :stay_note)
+    end
 end

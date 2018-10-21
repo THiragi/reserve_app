@@ -28,7 +28,7 @@
     </div>
     <div>
         <%= f.label :guest_count, "宿泊人数" %><span id="inputguestcount"><%= @guest_count %>名</span>
-        <%= f.hidden_field :guest_count %>
+        <%= f.hidden_field :guest_count, value: @guest_count %>
     </div>
     <div>
         <span>宿泊料金</span><span id="inputstayamount"><%= total %>円</span>
