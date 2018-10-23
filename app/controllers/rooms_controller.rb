@@ -18,7 +18,7 @@ class RoomsController < ApplicationController
     @start = Date.parse(params[:date]).weeks_ago(2)
     Rails.logger.debug(@start)
 
-    render partial: 'calendar', locals: {start: @start, room_type: @room_type}
+    render partial: 'calendar', locals: {start: @start, room: @room, room_type: @room_type}
 
   end
 
@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @room_type = @room.room_type
     @start = Date.parse(params[:date]).weeks_since(2)
-    render partial: 'calendar', locals: {start: @start, room_type: @room_type}
+    render partial: 'calendar', locals: {start: @start, room: @room, room_type: @room_type}
   end
 
   def calc

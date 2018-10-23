@@ -11,8 +11,8 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
-      redirect_to root_url
-    end  
+      render 'create'
+    end
   end
 
   def destroy
