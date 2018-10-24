@@ -50,7 +50,7 @@ $(function(){
   $('#checkin').blur(function() {
     var checkin = $('#checkin').val();
     if (checkin != ''){
-      if (new Date(checkin) <= new Date()){
+      if (new Date(checkin) <= new Date().setHours(0)){
         alert('今日より前の日付は選択できません');
         setTimeout(function() {
             $('#checkin').focus();
