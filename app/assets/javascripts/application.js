@@ -46,7 +46,7 @@ $(function(){
 
 //Date Validates
 
-
+/*
   $('#checkin').blur(function() {
     var checkin = $('#checkin').val();
     if (checkin != ''){
@@ -73,12 +73,11 @@ $(function(){
       }
     }
   });
-
+*/
   var id = $('#room-id').data('room-id');
   //Room rate Calculator
 
   $('#calc').on('click', function(){
-
       $.ajax({
           url: '/rooms/' + id + '/calc',
           type: 'POST',
@@ -94,7 +93,6 @@ $(function(){
       .fail(function(){
         alert('error!');
       });
-
   });
 
   //Calendar -Week Transition-

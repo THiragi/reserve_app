@@ -3,7 +3,6 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new
     @room_id = params[:reservation][:room_id]
     @guest_count = params[:reservation][:guestcount]
-    @amount = params[:reservation][:amount]
     @in_date = Date.parse(params[:reservation][:checkin])
     @out_date = Date.parse(params[:reservation][:checkout])
   end
@@ -12,6 +11,8 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
       render 'create'
+    else
+      render action: :new
     end
   end
 
