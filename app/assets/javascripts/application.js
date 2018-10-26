@@ -46,7 +46,7 @@ $(function(){
 
 //Date Validates
 
-/*
+
   $('#checkin').blur(function() {
     var checkin = $('#checkin').val();
     if (checkin != ''){
@@ -73,7 +73,7 @@ $(function(){
       }
     }
   });
-*/
+
   var id = $('#room-id').data('room-id');
   //Room rate Calculator
 

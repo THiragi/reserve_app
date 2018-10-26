@@ -1,4 +1,7 @@
 class Reservation < ApplicationRecord
+
+  enum status:{apply: 0, approve: 1, reject: 2, cancel: 3, arrive: 4, leave: 5}
+
   validates :reserve_no, presence: true, uniqueness: true
   validates :guest_name, presence: true
   validates :guest_phone, presence: true, numericality: :true, length: { in: 10..15 }

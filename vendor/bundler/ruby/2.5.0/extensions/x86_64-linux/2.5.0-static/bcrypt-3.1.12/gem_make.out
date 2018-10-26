@@ -1,0 +1,19 @@
+current directory: /home/vagrant/projects/reserve_app/vendor/bundler/ruby/2.5.0/gems/bcrypt-3.1.12/ext/mri
+/home/vagrant/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181025-5819-gdkcr.rb extconf.rb
+creating Makefile
+
+current directory: /home/vagrant/projects/reserve_app/vendor/bundler/ruby/2.5.0/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR=" clean
+
+current directory: /home/vagrant/projects/reserve_app/vendor/bundler/ruby/2.5.0/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR="
+compiling bcrypt_ext.c
+compiling crypt.c
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling wrapper.c
+linking shared-object bcrypt_ext.so
+
+current directory: /home/vagrant/projects/reserve_app/vendor/bundler/ruby/2.5.0/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20181025-5819-1vg3llb
