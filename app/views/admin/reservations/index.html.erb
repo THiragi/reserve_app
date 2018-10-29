@@ -1,0 +1,13 @@
+<h2>予約一覧</h2>
+
+<ul>
+  <% @reservations.each do |reserve| %>
+  <li>
+    <%= reserve.reserve_no %>
+    <%= reserve.guest_name %>
+    <%= reserve.status %>
+    <%= link_to "詳細", admin_reservation_path(reserve.id), method: :get %>
+  </li>
+  <% end %>
+</ul>
+<p><%= link_to "Sign out", destroy_admin_session_path, method: :delete %></p>
