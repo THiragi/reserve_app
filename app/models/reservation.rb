@@ -18,6 +18,7 @@ class Reservation < ApplicationRecord
   def reserves_overlap
     if Reservation.where('room_id = ? AND check_in_date <= ? AND ? <= check_out_date', self.room_id, self.check_out_date, self.check_in_date).any?
       errors.add(:check_in_date, "その期間はすでに予約が入っています")
+    end
   end
 
   def in_date_cannot_be_in_the_past
