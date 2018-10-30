@@ -13,6 +13,12 @@ class Reservation < ApplicationRecord
   validates :status, presence: true
   validate :in_date_cannot_be_in_the_past
   validate :out_date_cannot_be_before_the_in_date
+  validate :reserves_overlap
+
+  def reserves_overlap
+    if Reservation.where('room_id = ? AND check_in_date <= ? AND ? <= check_out_date', self.room_id, self.check_out_date, self.check_in_date).any?
+      errors.add(:check_in_date, "その期間はすでに予約が入っています")
+  end
 
   def in_date_cannot_be_in_the_past
     if check_in_date.present? && check_in_date < Date.today
