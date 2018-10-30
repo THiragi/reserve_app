@@ -1,8 +1,10 @@
 <h2>予約詳細</h2>
-
-<ul>
-  <li>
-  <%= @reservation.reserve_no %>
-  </li>
-</ul>
-<p><%= link_to "Sign out", destroy_admin_session_path, method: "delete" %></p>
+<div>
+  <dl>
+    <% @reservation.attributes.each do |attr_name, value| %>
+        <dt style="float: left; clear: left; width:180px;"><%= attr_name %></dt>
+        <dd style="float: left;"><%= value %></dd>
+    <% end %>
+  </dl>
+</div>
+<%= Room.find(@reservation.room_id).room_name %>

@@ -1,13 +1,32 @@
 <h2>予約一覧</h2>
+<% reservations = Reservation.where(status: 1) %>
+<table>
+  <thead>
+    <tr>
+      <th>予約番号</th>
+      <th>宿泊者名</th>
+      <th>部屋名</th>
+      <th>チェックイン日</th>
+      <th>チェックアウト日</th>
+      <th>ステータス</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% reservations.each do |reserve| %>
+  <tr>
+    <td><%= reserve.reserve_no %></td>
+    <td><%= reserve.guest_name %></td>
+    <td><%= Room.find(reserve.room_id).room_name %></td>
+    <td><%= reserve.check_in_date %></td>
+    <td><%= reserve.check_out_date %></td>
+    <td><%= reserve.status_i18n %>
+      <%= link_to "承認", approve_admin_reservation_path(reserve.id), method: :patch %>
+    </td>
+    <td><%= link_to "詳細", admin_reservation_path(reserve.id), method: :get %></td>
 
-<ul>
-  <% @reservations.each do |reserve| %>
-  <li>
-    <%= reserve.reserve_no %>
-    <%= reserve.guest_name %>
-    <%= reserve.status %>
-    <%= link_to "詳細", admin_reservation_path(reserve.id), method: :get %>
-  </li>
+  </tr>
+  </tbody>
   <% end %>
-</ul>
+</table>
 <p><%= link_to "Sign out", destroy_admin_session_path, method: :delete %></p>

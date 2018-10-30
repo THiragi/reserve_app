@@ -1,0 +1,10 @@
+ja:
+  enums:
+    reservation:
+      status:
+        apply: 申請中
+        approve: 承認
+        refuse: 非承認
+        cancel: キャンセル
+        arrive: 到着
+        leave: 退去
