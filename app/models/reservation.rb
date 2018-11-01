@@ -16,10 +16,11 @@ class Reservation < ApplicationRecord
   validate :reserves_overlap
 
   def reserves_overlap
-    if Reservation.where('room_id = ? AND check_in_date <= ? AND ? <= check_out_date', self.room_id, self.check_out_date, self.check_in_date).any?
-      errors.add(:check_in_date, "その期間はすでに予約が入っています")
-    end
-  end
+     reservations = Reservation.where(room_id: self.room_id).where('check_in_date <= ? AND ? <= check_out_date', self.check_out_date, self.check_in_date)
+     reservations = reservations.where.not(id: self.id) if !self.new_record?
+
+     errors.add(:check_in_date, "その期間はすでに予約が入っています") if reservations.any?
+   end
 
   def in_date_cannot_be_in_the_past
     if check_in_date.present? && check_in_date < Date.today
