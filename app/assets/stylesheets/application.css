@@ -179,3 +179,63 @@ input[type="button"] {
   width: 360px;
   height: 120px;
 }
+
+/* admin */
+input[type="radio"] {
+  display: none;
+}
+
+.tab_area {
+  margin: 0 10px;
+}
+
+.tab_area label {
+  width: 100px;
+  display: inline-block;
+  padding: 8px 0;
+  color: #999;
+  background: #ddd;
+  text-align: center;
+  font-size:16px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.tab_area label:hover {
+  opacity:0.5;
+}
+
+.panel_area {
+  background:#fff;
+}
+
+.tab_panel {
+  display: none;
+}
+
+#apply_tab:checked ~ .tab_area .tab1_label {
+  background: #fff;
+  color: #000;
+}
+
+#apply_tab:checked ~ .panel_area #apply_list {
+  display: block;
+}
+
+#approve_tab:checked ~ .tab_area .tab2_label {
+  background: #fff;
+  color: #000;
+}
+
+#approve_tab:checked ~ .panel_area #approve_list {
+  display: block;
+}
+
+#arrive_tab:checked ~ .tab_area .tab3_label {
+  background: #fff;
+  color: #000;
+}
+
+#arrive_tab:checked ~ .panel_area #arrive_list {
+  display: block;
+}

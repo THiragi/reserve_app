@@ -1,32 +1,27 @@
 <h2>予約一覧</h2>
-<% reservations = Reservation.where(status: 0) %>
-<table>
-  <thead>
-    <tr>
-      <th>予約番号</th>
-      <th>宿泊者名</th>
-      <th>部屋名</th>
-      <th>チェックイン日</th>
-      <th>チェックアウト日</th>
-      <th>ステータス</th>
-      <th>詳細</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% reservations.each do |reserve| %>
-  <tr>
-    <td><%= reserve.reserve_no %></td>
-    <td><%= reserve.guest_name %></td>
-    <td><%= Room.find(reserve.room_id).room_name %></td>
-    <td><%= reserve.check_in_date %></td>
-    <td><%= reserve.check_out_date %></td>
-    <td><%= reserve.status_i18n %>
-      <%= link_to "承認", approve_admin_reservation_path(reserve.id), method: :patch %>
-    </td>
-    <td><%= link_to "詳細", admin_reservation_path(reserve.id), method: :get %></td>
 
-  </tr>
-  </tbody>
-  <% end %>
-</table>
+<input type="radio" name="tab" id="apply_tab" checked>
+<input type="radio" name="tab" id="approve_tab">
+<input type="radio" name="tab" id="arrive_tab">
+
+<div class="tab_area">
+  <label class="tab1_label" for="apply_tab">申請一覧</label>
+  <label class="tab2_label" for="approve_tab">承認一覧</label>
+  <label class="tab3_label" for="arrive_tab">到着一覧</label>
+</div>
+
+<div class="panel_area">
+  <div id="apply_list" class="tab_panel">
+    <% reservations = Reservation.where(status: 0) %>
+    <%= render partial: 'list', locals:{reservations: reservations} %>
+  </div>
+  <div id="approve_list" class="tab_panel">
+    <% reservations = Reservation.where(status: 1) %>
+    <%= render partial: 'list', locals:{reservations: reservations} %>
+  </div>
+  <div id="arrive_list" class="tab_panel">
+    <% reservations = Reservation.where(status: 4) %>
+    <%= render partial: 'list', locals:{reservations: reservations} %>
+  </div>
+</div>
 <p><%= link_to "Sign out", destroy_admin_session_path, method: :delete %></p>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :reservations do
       member do
-        patch :approve
+        patch :approve, :refuse, :cancel, :arrive, :leave
       end
     end
   end

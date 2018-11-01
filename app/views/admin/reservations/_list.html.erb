@@ -1,0 +1,39 @@
+<table>
+  <thead>
+    <tr>
+      <th>予約番号</th>
+      <th>宿泊者名</th>
+      <th>部屋名</th>
+      <th>チェックイン日</th>
+      <th>チェックアウト日</th>
+      <th>ステータス変更</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% reservations.each do |reserve| %>
+    <tr>
+      <td><%= reserve.reserve_no %></td>
+      <td><%= reserve.guest_name %></td>
+      <td><%= Room.find(reserve.room_id).room_name %></td>
+      <td><%= reserve.check_in_date %></td>
+      <td><%= reserve.check_out_date %></td>
+      <td>
+        <% if reserve.apply? %>
+          <%= link_to "承認", approve_admin_reservation_path(reserve.id), method: :patch %>
+        <% end %>
+        <% if reserve.approve? %>
+          <%= link_to "到着", arrive_admin_reservation_path(reserve.id), method: :patch %>
+        <% end %>
+        <% if reserve.arrive? %>
+          <%= link_to "退去", leave_admin_reservation_path(reserve.id), method: :patch %>
+        <% end %>
+        <% if reserve.approve? or reserve.arrive? %>
+          <%= link_to "キャンセル", cancel_admin_reservation_path(reserve.id), method: :patch %>
+        <% end %>
+      </td>
+      <td><%= link_to "詳細", admin_reservation_path(reserve.id), method: :get %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
