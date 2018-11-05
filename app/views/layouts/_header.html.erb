@@ -1,7 +1,9 @@
 <header>
-  <%= link_to "reserve App", root_path %>
+  <%= link_to "Reserve App", root_path, class: "logo" %>
   <nav>
     <ul>
+        <li>Room-Type</li>
+        <li>Contact</li>
       <% if admin_signed_in? %>
        <li><%= link_to "Sign out", destroy_admin_session_path, method: :delete %></li>
       <% end %>

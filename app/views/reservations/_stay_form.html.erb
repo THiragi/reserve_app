@@ -24,7 +24,7 @@
         <%= f.date_field :check_out_date, value: @out_date %>
     </div>
     <div>
-        <span>泊数</span><span id="inputstaycount"><%= (@in_date..@out_date.days_ago(1)).count %>泊</span>
+        <span>泊数</span><span id="inputstaycount"><%= duration.count %>泊</span>
     </div>
     <div>
         <%= f.label :guest_count, "宿泊人数" %><span id="inputguestcount"><%= @guest_count %>名</span>

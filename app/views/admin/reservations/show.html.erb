@@ -1,10 +1,46 @@
 <h2>予約詳細</h2>
+<% reserve = @reservation %>
+<% duration = reserve.check_in_date..reserve.check_out_date.days_ago(1) %>
+<% total = 0 %>
+<% duration.each do |d| %>
+  <% total += Rate.get_amount(Room.find(reserve.room_id).room_type, d).amount %>
+<% end %>
 <div>
   <dl>
-    <% @reservation.attributes.each do |attr_name, value| %>
-        <dt style="float: left; clear: left; width:180px;"><%= attr_name %></dt>
-        <dd style="float: left;"><%= value %></dd>
-    <% end %>
+    <dt>予約番号</dt>
+    <dd><%= reserve.reserve_no %></dd>
+    <dt>宿泊者名</dt>
+    <dd><%= reserve.guest_name %></dd>
+    <dt>メールアドレス</dt>
+    <dd><%= reserve.guest_mail %></dd>
+    <dt>電話番号</dt>
+    <dd><%= reserve.guest_phone %></dd>
+    <dt>備考</dt>
+    <dd>
+      <% if reserve.stay_note == nil %>
+        <span>-</span>
+      <% else %>
+        <%= reserve.stay_note %>
+      <% end %>
+    </dd>
+    <dt>客室名</dt>
+    <dd><%= Room.find(reserve.room_id).room_name %></dd>
+    <dt>客室タイプ</dt>
+    <dd><%= Room.find(reserve.room_id).room_type.type_name %></dd>
+    <dt>チェックイン日</dt>
+    <dd><%= reserve.check_in_date %></dd>
+    <dt>チェックアウト日</dt>
+    <dd><%= reserve.check_out_date %></dd>
+    <dt>泊数</dt>
+    <dd><%= duration.count %>泊</dd>
+    <dt>宿泊人数</dt>
+    <dd><%= reserve.guest_count %></dd>
+    <dt>宿泊料金</dt>
+    <dd><%= total.to_s(:delimited) %>円</dd>
+    <dt>ステータス</dt>
+    <dd><%= reserve.status_i18n %></dd>
   </dl>
+  <%= render partial: "status_btn", locals:{reserve: reserve} %>
+
+  <%= link_to "一覧へ戻る", admin_reservations_path %>
 </div>
-<%= Room.find(@reservation.room_id).room_name %>

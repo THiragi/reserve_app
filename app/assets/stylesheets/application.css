@@ -17,19 +17,48 @@
 /* header */
 
 header {
-  margin: 0;
-  height: 60px;
-  line-height: 60px;
-  background: black;
+  margin-top: 0;
+  height: 80px;
+  width:100%;
+  line-height: 80px;
+  background: gray;
+}
+
+.logo {
+  float:left;
+  padding: 0 20px;
+  font-size: 36px;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 header a {
-  color: white;
+  color: black;
+}
+
+
+header nav ul {
+  text-align: center;
+  margin-top: 0;
+}
+
+header nav ul li {
+  padding: 0 20px;
+  border-left: black solid 1px;
+  display: inline;
 }
 
 /* body */
 body {
   margin: 0;
+}
+
+dt {
+  float:left;
+}
+
+dd {
+  margin-left: 180px;
 }
 
 /* rooms */
