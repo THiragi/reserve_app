@@ -14,6 +14,24 @@
  *= require_self
  */
 
+/* header */
+
+header {
+  margin: 0;
+  height: 60px;
+  line-height: 60px;
+  background: black;
+}
+
+header a {
+  color: white;
+}
+
+/* body */
+body {
+  margin: 0;
+}
+
 /* rooms */
 .container {
   width: 900px;
@@ -181,6 +199,24 @@ input[type="button"] {
 }
 
 /* admin */
+
+.panel_area table{
+  padding: 10px;
+  width: 100%;
+}
+
+.panel_area table th {
+  border-bottom: 1px solid black;
+}
+
+.panel_area table th{
+  text-align: left;
+}
+
+.panel_area table form {
+  display: inline-block;
+}
+
 input[type="radio"] {
   display: none;
 }
@@ -198,15 +234,10 @@ input[type="radio"] {
   text-align: center;
   font-size:16px;
   cursor: pointer;
-  transition: opacity 0.3s ease;
-}
-
-.tab_area label:hover {
-  opacity:0.5;
 }
 
 .panel_area {
-  background:#fff;
+  background: #f8f8ff;
 }
 
 .tab_panel {
@@ -214,7 +245,7 @@ input[type="radio"] {
 }
 
 #apply_tab:checked ~ .tab_area .tab1_label {
-  background: #fff;
+  background: #f8f8ff;
   color: #000;
 }
 
@@ -223,7 +254,7 @@ input[type="radio"] {
 }
 
 #approve_tab:checked ~ .tab_area .tab2_label {
-  background: #fff;
+  background: #f8f8ff;
   color: #000;
 }
 
@@ -232,7 +263,7 @@ input[type="radio"] {
 }
 
 #arrive_tab:checked ~ .tab_area .tab3_label {
-  background: #fff;
+  background: #f8f8ff;
   color: #000;
 }
 

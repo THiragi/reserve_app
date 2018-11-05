@@ -3,8 +3,8 @@ ja:
     reservation:
       status:
         apply: 申請中
-        approve: 承認
+        approve: 承認済
         refuse: 非承認
-        cancel: キャンセル
-        arrive: 到着
-        leave: 退去
+        cancel: キャンセル済
+        arrive: 到着済
+        leave: 退去済
