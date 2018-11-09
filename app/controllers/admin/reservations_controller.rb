@@ -1,4 +1,4 @@
-class Admin::ReservationsController < ApplicationController
+class Admin::ReservationsController < Admin::BaseController
   before_action :authenticate_admin!
 
   def index
