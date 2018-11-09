@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     end
   end
   root 'rooms#index'
-  resources :reservations
+  resources :reservations do
+    collection do
+      get :search
+    end
+  end
   resources :room_types
   resources :rooms do
     member do

@@ -1,0 +1,19 @@
+<% provide(:title) %>
+
+<h2>予約検索</h2>
+<%= form_tag(search_reservations_path, method: 'get') do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+
+<table>
+    <% @reservation.each do |reserve| %>
+      <tr>
+        <td><%= reserve.reserve_no %></td>
+        <td><%= reserve.guest_name %></td>
+        <td><%= reserve.check_in_date %></td>
+        <td><%= reserve.check_out_date %></td>
+        <td><%= link_to "予約内容の変更", edit_reservation_path(reserve.id)%></td>
+      </tr>
+    <% end %>
+</table>

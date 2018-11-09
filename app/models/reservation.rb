@@ -39,5 +39,9 @@ class Reservation < ApplicationRecord
     reserves.find_by('check_in_date <= ? AND check_out_date > ?', date, date)
   end
 
+  def self.search(search)
+    Reservation.where('reserve_no = ?', search)
+  end
+
 
 end
