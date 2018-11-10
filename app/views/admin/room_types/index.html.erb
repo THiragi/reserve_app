@@ -1,0 +1,30 @@
+<h2>客室タイプ一覧</h2>
+<div class="panel_area">
+
+  <%= link_to "新規部屋タイプ作成", new_admin_room_type_path, method: :get %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>客室タイプ名</th>
+        <th>定員数</th>
+        <th>説明</th>
+        <th>客室数</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @room_types.each do |type| %>
+      <tr>
+        <td><%= type.type_name %></td>
+        <td><%= type.capacity %></td>
+        <td><%= type.room_note %></td>
+        <td><%= Room.where(room_type_id: type.id).count %></td>
+        <td>客室の追加</td>
+        <td>客室タイプの編集</td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

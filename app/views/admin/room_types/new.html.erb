@@ -1,0 +1,19 @@
+<h2>新規部屋タイプ作成</h2>
+
+<div class="reserve_form">
+  <%= form_for(@room_type, url: admin_room_types_path, method: :post) do |f| %>
+  <div>
+    <%= f.label :type_name, "部屋タイプ名" %>
+    <%= f.text_field :type_name %>
+  </div>
+  <div>
+    <%= f.label :capacity, "定員数" %>
+    <%= f.number_field :capacity %>
+  </div>
+  <div>
+    <%= f.label :room_note, "説明" %>
+    <%= f.text_area :room_note %>
+  </div>
+  <%= f.submit "部屋タイプを作成", data:{confirm: "部屋タイプを作成しますか？"} %>
+  <% end %>
+</div>

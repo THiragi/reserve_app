@@ -2,10 +2,9 @@
   <%= link_to "Dashboard", root_path, class: "logo" %>
   <nav>
     <ul>
-        <li>Room-Type</li>
-        <li>Room</li>
-
-       <li><%= link_to "Sign out", destroy_admin_session_path, method: :delete %></li>
+      <li><%= link_to "客室タイプ一覧", admin_room_types_path, method: :get %></li>
+      <li><%= link_to "宿泊料金一覧", admin_rates_path, method: :get %></li>
+      <li><%= link_to "Sign out", destroy_admin_session_path, method: :delete %></li>
     </ul>
   </nav>
 </header>

@@ -7,8 +7,13 @@ Rails.application.routes.draw do
         patch :approve, :refuse, :cancel, :arrive, :leave
       end
     end
+    resources :room_types
+    resources :rooms
+    resources :rates
   end
+
   root 'rooms#index'
+
   resources :reservations do
     collection do
       get :search

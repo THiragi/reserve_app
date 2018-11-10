@@ -1,0 +1,31 @@
+<h2>宿泊料金一覧</h2>
+
+<div class="panel_area">
+  <%= link_to "新しい宿泊料金を追加", new_admin_rate_path, method: :get %>
+  <table>
+    <thead>
+      <tr>
+        <th>プラン名</th>
+        <th>料金</th>
+        <th>部屋タイプ</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>曜日</th>
+        <th>優先順位</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @rates.each do |rate| %>
+      <tr>
+        <td><%= rate.rate_type %></td>
+        <td><%= rate.amount %></td>
+        <td><%= RoomType.find(rate.room_type_id).type_name %></td>
+        <td><%= rate.start_date %></td>
+        <td><%= rate.end_date %></td>
+        <td><%= rate.weekday %></td>
+        <td><%= rate.rank %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
