@@ -1,0 +1,40 @@
+<h2>新規宿泊料金作成</h2>
+
+<div class="reserve_form">
+  <%= form_for(@rate, url: admin_rates_path, method: :post) do |f| %>
+  <div>
+    <%= f.label :rate_type, "料金プラン名" %>
+    <%= f.text_field :rate_type %>
+  </div>
+  <div>
+    <%= f.label :amount, "金額" %>
+    <%= f.number_field :amount %>
+  </div>
+  <div>
+    <%= f.label :room_type_id, "部屋タイプ" %>
+    <%= f.number_field :room_type_id %>
+  </div>
+  <div>
+    <%= f.label :start_date, "開始日" %>
+    <%= f.date_field :start_date %>
+  </div>
+  <div>
+    <%= f.label :end_date, "終了日" %>
+    <%= f.date_field :end_date %>
+  </div>
+  <div>
+    <%= f.label :weekday, "曜日" %>
+    <%= f.number_field :weekday %>
+  </div>
+  <div>
+    <%= f.label :weekday, "曜日" %>
+    <%= f.number_field :weekday %>
+  </div>
+  <div>
+    <%= f.label :rank, "優先順位" %>
+    <%= f.number_field :rank %>
+  </div>
+
+  <%= f.submit "宿泊料金を作成", data:{confirm: "宿泊料金を作成しますか？"} %>
+  <% end %>
+</div>

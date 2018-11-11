@@ -6,23 +6,19 @@
   <table>
     <thead>
       <tr>
-        <th>客室タイプ名</th>
-        <th>定員数</th>
+        <th style="width: 280px;">客室タイプ名</th>
+        <th style="width: 60px;">定員数</th>
+        <th style="width: 60px;">客室数</th>
         <th>説明</th>
-        <th>客室数</th>
-        <th></th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @room_types.each do |type| %>
       <tr>
-        <td><%= type.type_name %></td>
-        <td><%= type.capacity %></td>
-        <td><%= type.room_note %></td>
-        <td><%= Room.where(room_type_id: type.id).count %></td>
-        <td>客室の追加</td>
-        <td>客室タイプの編集</td>
+        <td style="padding: 2px;"><%= type.type_name %></td>
+        <td style="text-align:right; padding: 2px;"><%= type.capacity %></td>
+        <td style="text-align:right; padding: 2px;"><%= Room.where(room_type_id: type.id).count %></td>
+        <td style="padding: 2px;"><%= type.room_note %></td>
       </tr>
       <% end %>
     </tbody>

@@ -5,13 +5,14 @@
   <table>
     <thead>
       <tr>
-        <th>プラン名</th>
-        <th>料金</th>
+        <th>料金プラン名</th>
+        <th>金額</th>
         <th>部屋タイプ</th>
         <th>開始日</th>
         <th>終了日</th>
         <th>曜日</th>
         <th>優先順位</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +25,7 @@
         <td><%= rate.end_date %></td>
         <td><%= rate.weekday %></td>
         <td><%= rate.rank %></td>
+        <td>編集</td>
       </tr>
     <% end %>
     </tbody>

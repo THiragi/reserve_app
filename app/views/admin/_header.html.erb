@@ -1,7 +1,8 @@
 <header>
-  <%= link_to "Dashboard", root_path, class: "logo" %>
+  <%= link_to "Dashboard", admin_reservations_path, class: "logo" %>
   <nav>
     <ul>
+      <li><%= link_to "予約一覧", admin_reservations_path, method: :get %></li>
       <li><%= link_to "客室タイプ一覧", admin_room_types_path, method: :get %></li>
       <li><%= link_to "宿泊料金一覧", admin_rates_path, method: :get %></li>
       <li><%= link_to "Sign out", destroy_admin_session_path, method: :delete %></li>

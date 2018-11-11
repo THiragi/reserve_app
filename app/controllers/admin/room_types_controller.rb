@@ -16,12 +16,19 @@ class Admin::RoomTypesController < Admin::BaseController
   end
 
   def edit
+    @room_type = RoomType.find(params[:id])
   end
 
   def update
+    @room_type = RoomType.find(params[:id])
+    @room_type.update(room_type_params)
+    redirect_to admin_room_types_url
   end
 
   def destroy
+    @room_type = RoomType.find(params[:id])
+    @room_type.destroy
+    redirect_to admin_room_types_url
   end
 
   private
