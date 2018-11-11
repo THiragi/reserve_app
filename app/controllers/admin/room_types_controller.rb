@@ -4,6 +4,10 @@ class Admin::RoomTypesController < Admin::BaseController
     @room_types = RoomType.all
   end
 
+  def show
+    @room_type = RoomType.find(params[:id])
+  end
+
   def new
     @room_type = RoomType.new
   end

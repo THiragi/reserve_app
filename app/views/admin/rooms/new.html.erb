@@ -1,0 +1,16 @@
+<h2>新規客室作成</h2>
+
+<div class="reserve_form">
+  <%= form_for(@room, url: admin_rooms_path, method: :post) do |f| %>
+  <div>
+    <%= f.label :room_name, "客室名" %>
+    <%= f.text_field :room_name %>
+  </div>
+  <div>
+    <%= f.label :room_type_id, "客室タイプ" %>
+    <%= f.number_field :room_type_id, value: @room_type_id %>
+  </div>
+
+  <%= f.submit "客室を作成", data:{confirm: "客室を作成しますか？"} %>
+  <% end %>
+</div>

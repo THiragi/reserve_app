@@ -8,17 +8,17 @@
     </div>
     <div class="room_set">
       <table cellspacing="8px">
-        <% @rooms.where(room_type_id: room_type.id).in_groups_of(8)  do |row| %>
-          <tr>
-            <% row.each do |room| %>
-              <td>
-                <% if room %>
-                  <strong><%= link_to room.room_name, room, method: :get %></strong><br>予約状況
-                <% end %>
-              </td>
-            <% end %>
-          </tr>
+      <% @rooms.where(room_type_id: room_type.id).in_groups_of(8)  do |row| %>
+        <tr>
+        <% row.each do |room| %>
+          <td>
+          <% if room %>
+            <strong><%= link_to room.room_name, room, method: :get %></strong><br>予約状況
+          <% end %>
+          </td>
         <% end %>
+        </tr>
+      <% end %>
       </table>
     </div>
   </li>

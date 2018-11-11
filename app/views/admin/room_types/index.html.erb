@@ -10,15 +10,20 @@
         <th style="width: 60px;">定員数</th>
         <th style="width: 60px;">客室数</th>
         <th>説明</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       <% @room_types.each do |type| %>
       <tr>
-        <td style="padding: 2px;"><%= type.type_name %></td>
-        <td style="text-align:right; padding: 2px;"><%= type.capacity %></td>
-        <td style="text-align:right; padding: 2px;"><%= Room.where(room_type_id: type.id).count %></td>
-        <td style="padding: 2px;"><%= type.room_note %></td>
+        <td><%= type.type_name %></td>
+        <td><%= type.capacity %></td>
+        <td><%= Room.where(room_type_id: type.id).count %></td>
+        <td><%= type.room_note %></td>
+        <td>
+          <%= link_to "詳細設定", admin_room_type_path(type.id) %>
+          <%= link_to "客室を追加", new_admin_room_path(room_type_id: type.id)  %>
+        </td>
       </tr>
       <% end %>
     </tbody>
