@@ -13,6 +13,7 @@ class Admin::ReservationsController < Admin::BaseController
     @reservation = Reservation.find(params[:id])
     if @reservation.apply?
        @reservation.approve!
+       NotificationMailer.confirm_approve(@reservation).deliver_now
        redirect_to admin_reservations_path
     end
   end
@@ -21,6 +22,7 @@ class Admin::ReservationsController < Admin::BaseController
     @reservation = Reservation.find(params[:id])
     if @reservation.apply?
        @reservation.refuse!
+       NotificationMailer.confirm_refuse(@reservation).deliver_now
        redirect_to admin_reservations_path
     end
   end
@@ -29,6 +31,7 @@ class Admin::ReservationsController < Admin::BaseController
     @reservation = Reservation.find(params[:id])
     if @reservation.approve? or @reservation.arrive?
        @reservation.cancel!
+       NotificationMailer.confirm_cancel(@reservation).deliver_now
        redirect_to admin_reservations_path
     end
   end

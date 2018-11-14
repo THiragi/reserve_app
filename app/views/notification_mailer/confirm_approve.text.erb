@@ -1,0 +1,15 @@
+<%= @reservation.guest_name %> 様
+
+このたびは、当施設へのご宿泊のご予約まことにありがとうございます。
+申請いただいたご予約は以下の通り承認されました。
+
+
+予約番号：<%= @reservation.reserve_no %>
+予約者名：<%= @reservation.guest_name %>
+宿泊人数：<%= @reservation.guest_count %>
+チェックイン日：<%= @reservation.check_in_date %>
+チェックイン日：<%= @reservation.check_out_date %>
+
+それではご来訪をお待ちしております。
+
+ReserveApp

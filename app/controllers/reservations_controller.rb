@@ -10,8 +10,8 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
-      NotificationMailer.message_to_customer(@reservation).deliver_now
-      NotificationMailer.notice_to_admin(@reservation).deliver_now
+      NotificationMailer.thanks_for_apply(@reservation).deliver_now
+      NotificationMailer.confirm_apply(@reservation).deliver_now
       render 'create'
     else
       render action: :new
