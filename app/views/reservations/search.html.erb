@@ -1,11 +1,12 @@
 <% provide(:title) %>
 
 <h2>予約検索</h2>
+<div class="panel_area">
 <%= form_tag(search_reservations_path, method: 'get') do %>
   <%= text_field_tag :search %>
   <%= submit_tag 'Search', name: nil %>
 <% end %>
-
+<%= flash[:success] %>
 <table>
     <% @reservation.each do |reserve| %>
       <tr>
@@ -17,3 +18,4 @@
       </tr>
     <% end %>
 </table>
+</div>

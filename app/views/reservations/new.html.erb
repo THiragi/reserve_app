@@ -5,14 +5,18 @@
 <% l = letters.sample(4).join %>
 <% n = sprintf('%08d', Reservation.count + 1) %>
 
-<%= form_for @reservation do |f| %>
-  <% if @reservation.errors.any? %>
+<% if @reservation.errors.any? %>
+  <div class="errors_explain">
+    <h3><%= @reservation.errors.count %>件のエラーがあります</h3>
     <ul>
-      <% @reservation.errors.full_messages.each do |msg| %>
-        <li><%= msg =%></li>
-      <% end %>
+    <% @reservation.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
     </ul>
-  <% end %>
+  </div>
+<% end %>
+
+<%= form_for @reservation do |f| %>
   <%= f.hidden_field :reserve_no, value: l + n %>
     <div class="form_list">
       <%= render 'guest_form', f: f %>

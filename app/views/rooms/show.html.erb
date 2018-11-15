@@ -2,6 +2,7 @@
 <% today = Date.today %>
 <input type="hidden" id="room-id" data-room-id="<%= @room.id %>"/>
 <h2><%= @room.room_name %> -<%= @room_type.type_name %>- の予約状況</h2>
+
 <div class="content">
 
   <div id="calendar-area">
@@ -20,6 +21,7 @@
     <input type="number" name="guestcount[]" id="guest_count" min="1" max="<%= @room_type.capacity %>" value="<%= @room_type.capacity %>" style="width: 28px;"/><span>人</span>
 
   </div>
+
   <input type="button" id="calc" class="btn" value="料金を計算する"/>
 
   <div id="total">

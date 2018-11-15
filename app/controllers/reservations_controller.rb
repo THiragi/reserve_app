@@ -14,7 +14,7 @@ class ReservationsController < ApplicationController
       NotificationMailer.confirm_apply(@reservation).deliver_now
       render 'create'
     else
-      render action: :new
+      render 'new'
     end
   end
 
@@ -28,8 +28,12 @@ class ReservationsController < ApplicationController
 
   def update
     @reservation = Reservation.find(params[:id])
-    @reservation.update(reservation_params)
-    redirect_to search_reservations_url
+    if @reservation.update(reservation_params)
+      flash[:success] ="予約内容を変更しました"
+      redirect_to search_reservations_url
+    else
+      render 'edit'
+    end
   end
 
   def destroy

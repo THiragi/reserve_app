@@ -18,6 +18,8 @@
 
 $(function(){
 
+
+
   $('#editConfirm').click(function(){
     getValue();
     $('.form_list').show();
@@ -91,7 +93,7 @@ $(function(){
         $('#total').html(data);
       })
       .fail(function(){
-        alert('error!');
+        alert('その日は予約できません');
       });
   });
 

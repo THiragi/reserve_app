@@ -17,11 +17,12 @@
 /* header */
 
 header {
+  color: white;
   margin-top: 0;
   height: 80px;
   width:100%;
   line-height: 80px;
-  background: gray;
+  background: #404040;
 }
 
 .logo {
@@ -33,7 +34,7 @@ header {
 }
 
 header a {
-  color: black;
+  color: white;
 }
 
 
@@ -44,7 +45,7 @@ header nav ul {
 
 header nav ul li {
   padding: 0 20px;
-  border-left: black solid 1px;
+  border-left: white solid 1px;
   display: inline;
 }
 
@@ -298,4 +299,26 @@ input[type="radio"] {
 
 #arrive_tab:checked ~ .panel_area #arrive_list {
   display: block;
+}
+.errors_explain {
+  margin-bottom: 16px;
+  width: 500px;
+}
+
+.errors_explain h3 {
+  margin:0;
+  padding:6px;
+  font-size: 16px;
+  color: white;
+  background: #dc143c;
+}
+
+.errors_explain ul {
+  margin:0;
+  padding:8px 12px;
+  list-style: none;
+  font-size: 14px;
+  color: black;
+  background: #ffe4e1;
+  border: 2px solid #dc143c;
 }

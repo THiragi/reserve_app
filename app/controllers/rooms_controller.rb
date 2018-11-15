@@ -36,7 +36,14 @@ class RoomsController < ApplicationController
     @out_date = Date.parse(params[:checkout])
     @guest_count = params[:guestcount]
     @reservation = Reservation.new
+
+    #reservations = Reservation.where(room_id: @room.id).where('check_in_date <= ? AND ? <= check_out_date', @out_date, @in_date)
+    #  if reservations.any?
+    #    flash[:danger] = "その日はすでに予約されています"
+    #    redirect_to @room
+    #  else
     render partial: 'result',  locals: {start: @start, room: @room, room_type: @room_type}
+    #  end
   end
 
 

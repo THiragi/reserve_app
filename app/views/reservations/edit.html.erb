@@ -1,47 +1,59 @@
 <% provide(:title) %>
 
 <h2>予約変更</h2>
-<div class="reserve_form">
-<%= form_for @reservation do |f| %>
-      <%= f.hidden_field :reserve_no %>
-  <div>
-      <%= f.label :guest_name, "予約者名" %><span><%= @reservation.guest_name %></span>
-      <%= f.hidden_field :guest_name %>
-  </div>
-  <div>
-      <%= f.label :guest_mail, "メールアドレス*" %><span><%= @reservation.guest_mail %></span>
-      <%= f.hidden_field :guest_mail %>
-  </div>
-  <div>
-      <%= f.label :guest_phone, "電話番号*" %><span><%= @reservation.guest_phone %></span>
-      <%= f.hidden_field :guest_phone %>
-  </div>
-  <div>
-      <%= f.label :stay_note, "備考" %>
-      <%= f.text_area :stay_note %>
-  </div>
 
-  <div>
-      <%= f.label :room_id, "客室名" %><span><%= Room.find(@reservation.room_id).room_name %></span>
-      <%= f.hidden_field :room_id %>
-  </div>
-  <div>
-      <%= f.label :check_in_date, "チェックイン日" %>
-      <%= f.date_field :check_in_date %>
-  </div>
-  <div>
-      <%= f.label :check_out_date, "チェックアウト日" %>
-      <%= f.date_field :check_out_date %>
-  </div>
 
-  <div>
-      <%= f.label :guest_count, "宿泊人数" %><span><%= @reservation.guest_count %></span>
-      <%= f.hidden_field :guest_count %>
+<% if @reservation.errors.any? %>
+  <div class="errors_explain">
+    <h3><%= @reservation.errors.count %>件のエラーがあります</h3>
+    <ul>
+    <% @reservation.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
   </div>
-  <div>
-      <%= f.hidden_field :status %>
-  </div>
-      <%= f.submit "予約内容を変更する"  %>
 <% end %>
-<%= button_to "予約をキャンセルする", reservation_path(@reservation.id), method: :delete, data:{confirm: "予約をキャンセルします。よろしいですか？"} %>
+<div class="reserve_form">
+  <%= form_for @reservation do |f| %>
+        <%= f.hidden_field :reserve_no %>
+    <div>
+        <%= f.label :guest_name, "予約者名" %><span><%= @reservation.guest_name %></span>
+        <%= f.hidden_field :guest_name %>
+    </div>
+    <div>
+        <%= f.label :guest_mail, "メールアドレス*" %><span><%= @reservation.guest_mail %></span>
+        <%= f.hidden_field :guest_mail %>
+    </div>
+    <div>
+        <%= f.label :guest_phone, "電話番号*" %><span><%= @reservation.guest_phone %></span>
+        <%= f.hidden_field :guest_phone %>
+    </div>
+    <div>
+        <%= f.label :stay_note, "備考" %>
+        <%= f.text_area :stay_note %>
+    </div>
+
+    <div>
+        <%= f.label :room_id, "客室名" %><span><%= Room.find(@reservation.room_id).room_name %></span>
+        <%= f.hidden_field :room_id %>
+    </div>
+    <div>
+        <%= f.label :check_in_date, "チェックイン日" %>
+        <%= f.date_field :check_in_date %>
+    </div>
+    <div>
+        <%= f.label :check_out_date, "チェックアウト日" %>
+        <%= f.date_field :check_out_date %>
+    </div>
+
+    <div>
+        <%= f.label :guest_count, "宿泊人数" %><span><%= @reservation.guest_count %></span>
+        <%= f.hidden_field :guest_count %>
+    </div>
+    <div>
+        <%= f.hidden_field :status %>
+    </div>
+        <%= f.submit "予約内容を変更する", data:{confirm: "予約内容を変更します。よろしいですか？"}  %>
+  <% end %>
+  <%= button_to "予約をキャンセルする", reservation_path(@reservation.id), method: :delete, data:{confirm: "予約をキャンセルします。よろしいですか？"} %>
 </div>
