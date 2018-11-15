@@ -1,19 +1,12 @@
-<% room = Room.find(@room_id) %>
-<% room_type = room.room_type %>
-<% duration = @in_date..@out_date.days_ago(1) %>
-<% total = 0 %>
-<% duration.each do |d| %>
-  <% total += Rate.get_amount(room_type, d).amount %>
-<% end %>
 <div class="reserve_form">
     <p>予約内容</p>
 
     <div>
-        <%= f.label :room_id, "客室名" %><span id="inputRoom"><%= room.room_name %></span>
+        <%= f.label :room_id, "客室名" %><span id="inputRoom"><%= Room.find(@room_id).room_name %></span>
         <%= f.hidden_field :room_id, value: @room_id %>
     </div>
     <div>
-        <span>客室タイプ</span><span id="inputRoomType"><%= room_type.type_name %></span>
+        <span>客室タイプ</span><span id="inputRoomType"><%= Room.find(@room_id).room_type.type_name %></span>
     </div>
     <div>
         <%= f.label :check_in_date, "チェックイン日" %>
@@ -24,14 +17,14 @@
         <%= f.date_field :check_out_date, value: @out_date %>
     </div>
     <div>
-        <span>泊数</span><span id="inputstaycount"><%= duration.count %>泊</span>
+        <span>泊数</span><span id="inputstaycount"><%= (@in_date..@out_date.days_ago(1)).count %>泊</span>
     </div>
     <div>
         <%= f.label :guest_count, "宿泊人数" %><span id="inputguestcount"><%= @guest_count %>名</span>
         <%= f.hidden_field :guest_count, value: @guest_count %>
     </div>
     <div>
-        <span>宿泊料金</span><span id="inputstayamount"><%= total %>円</span>
+        <span>宿泊料金</span><span id="inputstayamount"><%= @amount %>円</span>
     </div>
 
 </div>

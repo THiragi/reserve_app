@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   root 'rooms#index'
 
   resources :reservations do
+    member do
+      patch :cancel
+    end
     collection do
       get :search
     end

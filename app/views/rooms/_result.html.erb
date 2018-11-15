@@ -10,9 +10,9 @@
 </div>
 <%= form_for(@reservation, url: { controller: :reservations, action: :new}, method: :get) do |f| %>
   <%= f.hidden_field :room_id, value: room.id %>
-  <%= f.hidden_field :checkin, value: @in_date %>
-  <%= f.hidden_field :checkout, value: @out_date %>
-  <%= f.hidden_field :guestcount, value: @guest_count %>
+  <%= f.hidden_field :check_in_date, value: @in_date %>
+  <%= f.hidden_field :check_out_date, value: @out_date %>
+  <%= f.hidden_field :guest_count, value: @guest_count %>
   <%= f.hidden_field :amount, value: total %>
   <%= f.submit "この内容で予約する", class: "btn" %>
 <% end %>

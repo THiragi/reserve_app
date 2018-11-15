@@ -2,9 +2,10 @@ class ReservationsController < ApplicationController
   def new
     @reservation = Reservation.new
     @room_id = params[:reservation][:room_id]
-    @guest_count = params[:reservation][:guestcount]
-    @in_date = Date.parse(params[:reservation][:checkin])
-    @out_date = Date.parse(params[:reservation][:checkout])
+    @guest_count = params[:reservation][:guest_count]
+    @in_date = Date.parse(params[:reservation][:check_in_date])
+    @out_date = Date.parse(params[:reservation][:check_out_date])
+    @amount = params[:reservation][:amount]
   end
 
   def create
@@ -36,11 +37,18 @@ class ReservationsController < ApplicationController
     end
   end
 
-  def destroy
+  def cancel
     @reservation = Reservation.find(params[:id])
-    @reservation.destroy
-    flash[:success] = "Reservation deleted"
-    redirect_to search_reservations_url
+    if @reservation.approve? or @reservation.arrive?
+       @reservation.cancel!
+       NotificationMailer.confirm_cancel(@reservation).deliver_now
+      flash[:success] ="予約をキャンセルしました"
+       redirect_to search_reservations_url
+    end
+  end
+
+  def destroy
+
   end
 
   private

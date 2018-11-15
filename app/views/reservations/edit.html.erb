@@ -55,5 +55,5 @@
     </div>
         <%= f.submit "予約内容を変更する", data:{confirm: "予約内容を変更します。よろしいですか？"}  %>
   <% end %>
-  <%= button_to "予約をキャンセルする", reservation_path(@reservation.id), method: :delete, data:{confirm: "予約をキャンセルします。よろしいですか？"} %>
+  <%= button_to "予約をキャンセルする", cancel_reservation_path(@reservation.id), method: :patch, data:{confirm: "予約をキャンセルします。よろしいですか？"} %>
 </div>

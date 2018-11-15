@@ -5,7 +5,8 @@ class Reservation < ApplicationRecord
   validates :reserve_no, presence: true, uniqueness: true
   validates :guest_name, presence: true
   validates :guest_phone, presence: true, numericality: :true, length: { in: 10..15 }
-  validates :guest_mail, presence: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :guest_mail, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates :check_in_date, presence: true
   validates :check_out_date, presence: true
   validates :room_id, presence: true
