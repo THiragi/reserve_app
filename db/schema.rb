@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20181026030325) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 20181026030325) do
     t.string "stay_note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status", limit: 1, default: 0, null: false
+    t.integer "status", limit: 2, default: 0, null: false
   end
 
   create_table "room_types", force: :cascade do |t|
