@@ -125,8 +125,6 @@ h2 {
   float: left;
   width: 100px;
 }
-.room_set {
-}
 
 /* calendar */
 .calendar-table {
@@ -204,9 +202,10 @@ td[class^="past"] {
 }
 
 .btn {
+
   font-size: 21px;
   display: inline-block;
-  margin: 15px 0 15px auto;
+  margin: 15px 0;
   border: 3px solid black;
   border-radius: 8px;
   padding: 6px 12px;
