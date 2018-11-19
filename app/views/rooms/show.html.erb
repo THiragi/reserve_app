@@ -21,9 +21,9 @@
     <input type="number" name="guestcount[]" id="guest_count" min="1" max="<%= @room_type.capacity %>" value="<%= @room_type.capacity %>" style="width: 28px;"/><span>人</span>
 
   </div>
-
-  <input type="button" id="calc" class="btn" value="料金を計算する"/>
-
+  <div class="btn_bars">
+    <input type="button" id="calc" class="btn" value="料金を計算する"/>
+  </div>
   <div id="total">
   </div>
 </div>

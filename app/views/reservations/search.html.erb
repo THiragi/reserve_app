@@ -4,7 +4,7 @@
 <div class="panel_area">
 <%= form_tag(search_reservations_path, method: 'get') do %>
   <%= text_field_tag :search %>
-  <%= submit_tag 'Search', name: nil %>
+  <%= submit_tag '検索', name: nil, class:"btn" %>
 <% end %>
 <%= flash[:success] %>
 <table>

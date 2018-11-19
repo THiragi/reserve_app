@@ -201,8 +201,11 @@ td[class^="past"] {
   border: none;
 }
 
-.btn {
+.btn_bars {
+  text-align: right;
+}
 
+.btn {
   font-size: 21px;
   display: inline-block;
   margin: 15px 0;

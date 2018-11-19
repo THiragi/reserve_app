@@ -49,6 +49,7 @@ $(function(){
 //Date Validates
 
 
+
   $('#checkin').blur(function() {
     var checkin = $('#checkin').val();
     if (checkin != ''){
@@ -75,6 +76,19 @@ $(function(){
       }
     }
   });
+
+  $('#guest_count').blur(function() {
+    var guestcount = $('#guest_count').val();
+    if (guestcount == 0){
+        alert('人数に０は入力できません');
+        setTimeout(function() {
+            $('#guest_count').focus();
+            $('#guest_count').select();
+        }, 1);
+
+    }
+  });
+
 
   var id = $('#room-id').data('room-id');
   //Room rate Calculator

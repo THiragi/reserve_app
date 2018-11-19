@@ -14,5 +14,7 @@
   <%= f.hidden_field :check_out_date, value: @out_date %>
   <%= f.hidden_field :guest_count, value: @guest_count %>
   <%= f.hidden_field :amount, value: total %>
-  <%= f.submit "この内容で予約する", class: "btn" %>
+  <div class="btn_bars">
+    <%= f.submit "この内容で予約する", class: "btn" %>
+  <div class="btn_bars">
 <% end %>

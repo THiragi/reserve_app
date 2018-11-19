@@ -1,4 +1,9 @@
 <% provide(:title) %>
+<% duration = @reservation.check_in_date..@reservation.check_out_date.days_ago(1) %>
+<% total = 0 %>
+<% duration.each do |d| %>
+  <% total += Rate.get_amount(Room.find(@reservation.room_id).room_type.id, d).amount %>
+<% end %>
 
 <h2>予約変更</h2>
 
@@ -53,7 +58,15 @@
     <div>
         <%= f.hidden_field :status %>
     </div>
-        <%= f.submit "予約内容を変更する", data:{confirm: "予約内容を変更します。よろしいですか？"}  %>
+    <div>
+        <span>宿泊料金</span><span id="inputstayamount"><%= total %>円</span>
+    </div>
+
+    <div class="btn_bars">
+
+
+        <%= f.submit "予約内容を変更する", class: "btn", data:{confirm: "予約内容を変更します。よろしいですか？"}  %>
   <% end %>
-  <%= button_to "予約をキャンセルする", cancel_reservation_path(@reservation.id), method: :patch, data:{confirm: "予約をキャンセルします。よろしいですか？"} %>
+        <%= button_to "予約をキャンセルする", cancel_reservation_path(@reservation.id), method: :patch, class: "btn", data:{confirm: "予約をキャンセルします。よろしいですか？"} %>
+    </div>
 </div>
