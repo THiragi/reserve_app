@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require turbolinks
 //= require_tree .
 
@@ -48,44 +50,22 @@ $(function(){
 
 //Date Validates
 
-
-
-  $('#checkin').blur(function() {
-    var checkin = $('#checkin').val();
-    if (checkin != ''){
-      if (new Date(checkin) <= new Date().setHours(0)){
-        alert('今日より前の日付は選択できません');
-        setTimeout(function() {
-            $('#checkin').focus();
-            $('#checkin').select();
-        }, 1);
+  $('.date_form').validate({
+    rules : {
+      guestcount: {
+        required: true,
+        min: 1
       }
-    }
-  });
-
-  $('#checkout').blur(function() {
-    var checkin = $('#checkin').val();
-    var checkout = $('#checkout').val();
-    if (checkout != ''){
-      if (new Date(checkout) <= new Date(checkin)){
-        alert('チェックイン日より前の日付は選択できません');
-        setTimeout(function() {
-            $('#checkout').focus();
-            $('#checkout').select();
-        }, 1);
+    },
+    messages: {
+      guestcount: {
+        required: '人数を入力してください',
+        min: '0は入力できません'
       }
-    }
-  });
-
-  $('#guest_count').blur(function() {
-    var guestcount = $('#guest_count').val();
-    if (guestcount == 0){
-        alert('人数に０は入力できません');
-        setTimeout(function() {
-            $('#guest_count').focus();
-            $('#guest_count').select();
-        }, 1);
-
+    },
+    errorPlacement: function(error, element){
+      if(element.attr('name') === 'guestcount')
+      error.appendTo($('.msg_guestcount'));
     }
   });
 
@@ -98,7 +78,7 @@ $(function(){
           url: '/rooms/' + id + '/calc',
           type: 'POST',
           data:{
-            guestcount: $('#guest_count').val(),
+            guestcount: $('#guestcount').val(),
             checkin: $('#checkin').val(),
             checkout: $('#checkout').val()
           },

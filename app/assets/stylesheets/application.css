@@ -194,11 +194,15 @@ td[class^="past"] {
   -moz-appearance: none;
   appearance: none;
   outline: none;
-  font-size: 21px;
+  font-size: 20px;
 }
 
 .check_form input[type="date"], input[type="number"]  {
   border: none;
+}
+
+.check_form input[type="number"]{
+  width: 40px;
 }
 
 .btn_bars {
