@@ -17,12 +17,17 @@
     <input type="date" name="checkin" id="checkin" min="<%= today %>" max="<%= today.years_since(3) %>"/>
 
     <label for="checkout">チェックアウト日：</label>
-    <input type="date" name="checkout" id="checkout"/>
+    <input type="date" name="checkout" id="checkout" min="<%= today.days_since(1) %>" max="<%= today.days_since(1).years_since(3) %>"/>
 
     <label for="guest_count">人数：</label>
     <input type="number" name="guestcount" id="guestcount" min="1" max="<%= @room_type.capacity %>" value="<%= @room_type.capacity %>" style="width: 28px;"/><span>人</span>
 
 
+
+    <div class="msg_checkin">
+    </div>
+    <div class="msg_checkout">
+    </div>
     <div class="msg_guestcount">
     </div>
 

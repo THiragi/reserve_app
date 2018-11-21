@@ -52,20 +52,37 @@ $(function(){
 
   $('.date_form').validate({
     rules : {
+      checkin: {
+        required: true,
+      },
+      checkout: {
+        required: true,
+      },
       guestcount: {
         required: true,
         min: 1
       }
     },
     messages: {
+      checkin: {
+        required: true
+      },
+      checkout: {
+        required: true
+      },
       guestcount: {
         required: '人数を入力してください',
         min: '0は入力できません'
       }
     },
     errorPlacement: function(error, element){
-      if(element.attr('name') === 'guestcount')
-      error.appendTo($('.msg_guestcount'));
+        if(element.attr('name') === 'checkin'){
+        error.appendTo($('.msg_checkin'));
+      } else if (element.attr('name') === 'checkout'){
+        error.appendTo($('.msg_checkout'));
+      } else {
+        error.appendTo($('.msg_guestcount'));
+      }
     }
   });
 
