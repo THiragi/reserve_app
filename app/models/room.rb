@@ -3,6 +3,6 @@ class Room < ApplicationRecord
 
   validates :room_name, presence: true, uniqueness: true
   validates :room_type_id, presence: true
-  
+
 
 end
