@@ -194,7 +194,7 @@ td[class^="past"] {
   -moz-appearance: none;
   appearance: none;
   outline: none;
-  font-size: 20px;
+  font-size: 21px;
 }
 
 .check_form input[type="date"], input[type="number"]  {
@@ -227,8 +227,28 @@ td[class^="past"] {
 
 .date_form, .result {
   margin: 30px auto;
-  text-align: right;
 }
+
+.date_form {
+  display: flex;
+}
+
+.date_form ul {
+  list-style: none;
+  padding: 0;
+  flex: 1;
+}
+
+.date_form ul li {
+  display: flex;
+}
+
+div[id^="msg"] {
+  background: #ffe4e1; 
+  color: red;
+}
+
+
 
 .result span {
   margin: 0 20px 0 0;
@@ -335,6 +355,7 @@ input[type="radio"] {
 #arrive_tab:checked ~ .panel_area #arrive_list {
   display: block;
 }
+
 .errors_explain {
   margin-bottom: 16px;
   width: 500px;

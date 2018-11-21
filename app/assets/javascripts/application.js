@@ -48,47 +48,66 @@ $(function(){
     $('#confirmStayAmount').html($('#inputstayamount'));
   }
 
-//Date Validates
+  //Date Validates
 
-  $('.date_form').validate({
-    rules : {
-      checkin: {
-        required: true,
-      },
-      checkout: {
-        required: true,
-      },
-      guestcount: {
-        required: true,
-        min: 1
-      }
-    },
-    messages: {
-      checkin: {
-        required: true
-      },
-      checkout: {
-        required: true
-      },
-      guestcount: {
-        required: '人数を入力してください',
-        min: '0は入力できません'
-      }
-    },
-    errorPlacement: function(error, element){
-        if(element.attr('name') === 'checkin'){
-        error.appendTo($('.msg_checkin'));
-      } else if (element.attr('name') === 'checkout'){
-        error.appendTo($('.msg_checkout'));
+  $('#checkin').blur(function() {
+    var checkin = $('#checkin').val();
+    if (checkin != ''){
+      if (new Date(checkin) < new Date().setHours(0)){
+        $('#msg_checkin').text('※今日より以前は選択できません');
+        setTimeout(function() {
+            $('#checkin').focus();
+            $('#checkin').select();
+        }, 1);
       } else {
-        error.appendTo($('.msg_guestcount'));
+        $('#msg_checkin').empty();
       }
     }
   });
 
+  $('#checkout').blur(function() {
+    var checkin = $('#checkin').val();
+    var checkout = $('#checkout').val();
+    if (checkout != ''){
+      if (new Date(checkout) <= new Date(checkin)){
+        $('#msg_checkout').text('※その日付は選択できません');
+        setTimeout(function() {
+            $('#checkout').focus();
+            $('#checkout').select();
+        }, 1);
+      } else {
+        $('#msg_checkout').empty();
+      }
+    }
+  });
+
+  //Guestcount Validate
+
+  $('#guestcount').blur(function() {
+    var capacity = $('.capacity').text();
+    var guestcount = $('#guestcount').val();
+
+    if (guestcount == 0){
+        $('#msg_guestcount').text('※人数に0は使用できません');
+        setTimeout(function() {
+            $('#guestcount').focus();
+            $('#guestcount').select();
+        }, 1);
+     } else if (capacity < guestcount ) {
+       $('#msg_guestcount').text('※定員数を超過しています');
+       setTimeout(function() {
+           $('#guestcount').focus();
+           $('#guestcount').select();
+       }, 1);
+     } else {
+       $('#msg_guestcount').empty();
+     }
+  });
+
+
+  //Room rate Calculator
 
   var id = $('#room-id').data('room-id');
-  //Room rate Calculator
 
   $('#calc').on('click', function(){
       $.ajax({
@@ -104,7 +123,7 @@ $(function(){
         $('#total').html(data);
       })
       .fail(function(){
-        alert('その日は予約できません');
+        alert('入力されていない項目があります');
       });
   });
 
