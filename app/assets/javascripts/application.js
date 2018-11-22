@@ -160,4 +160,45 @@ $(function(){
       });
   });
 
+
+  //Reservation Form Validates
+
+  $('#new_reservation').validate({
+    rules : {
+      'reservation[guest_name]': {
+        required: true,
+      },
+      'reservation[guest_mail]': {
+        required: true,
+        email: true
+      },
+      'reservation[guest_phone]': {
+        required: true,
+      }
+    },
+    messages: {
+      'reservation[guest_name]': {
+        required: '*名前を入力してください',
+      },
+      'reservation[guest_mail]': {
+        required: '*メールアドレスを入力してください',
+        email: '*正しい形式で入力してください'
+      },
+      'reservation[guest_phone]': {
+        required: '*電話番号を入力してください',
+      }
+    },
+    errorPlacement: function(error, element){
+        if(element.attr('name') === 'reservation[guest_name]'){
+        error.appendTo($('.msg_guestname'));
+      } else if (element.attr('name') === 'reservation[guest_mail]') {
+        error.appendTo($('.msg_guestmail'));
+      } else {
+        error.appendTo($('.msg_guestphone'));
+      }
+    }
+  });
+
+
+
 });

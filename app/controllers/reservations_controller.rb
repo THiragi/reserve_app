@@ -10,6 +10,12 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
+    @room_id = params[:reservation][:room_id]
+    @guest_count = params[:reservation][:guest_count]
+    @in_date = Date.parse(params[:reservation][:check_in_date])
+    @out_date = Date.parse(params[:reservation][:check_out_date])
+    @amount = params[:reservation][:amount]
+
     if @reservation.save
       NotificationMailer.thanks_for_apply(@reservation).deliver_now
       NotificationMailer.confirm_apply(@reservation).deliver_now

@@ -18,16 +18,18 @@
 
 <%= form_for @reservation do |f| %>
   <%= f.hidden_field :reserve_no, value: l + n %>
+      <%= render 'stay_form', f: f %>
     <div class="form_list">
-      <%= render 'form', f: f %>
+      <%= render 'guest_form', f: f %>
       <div class="btn_bars">
         <input type="button" class="btn" value="確認する" id="sendConfirm"/>
       </div>
     </div>
+
     <div class="confirm_list" style="display: none">
       <%= render 'confirm' %>
       <div class="btn_bars">
-        <%= f.submit "予約を申請する", class:"btn" %>      
+        <%= f.submit "予約を申請する", class:"btn" %>
         <input type="button" class="btn" value="変更する" id="editConfirm"/>
       </div>
     </div>
