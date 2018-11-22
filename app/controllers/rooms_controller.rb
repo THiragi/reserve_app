@@ -36,13 +36,11 @@ class RoomsController < ApplicationController
     @out_date = Date.parse(params[:checkout])
     @guest_count = params[:guestcount]
     @reservation = Reservation.new
-
-
-    if Reservation.date_check(@room.id, @in_date, @out_date).any?
-      render text: "その日はすでに予約されています", status: 201
-    else
+#    if Reservation.date_check(@room.id, @in_date, @out_date).any?
+#      render text: "その日はすでに予約されています", status: 201
+#    else
       render partial: 'result',  locals: {start: @start, room: @room, room_type: @room_type}
-    end
+#    end
   end
 
 

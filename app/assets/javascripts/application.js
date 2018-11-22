@@ -110,7 +110,6 @@ $(function(){
   var id = $('#room-id').data('room-id');
 
   $('#calc').on('click', function(){
-    if (status == 200){
       $.ajax({
           url: '/rooms/' + id + '/calc',
           type: 'POST',
@@ -126,11 +125,7 @@ $(function(){
       .fail(function(){
         alert('入力されていない項目があります');
       });
-    } else if (status == 201) {
-
-    }
   });
-
   //Calendar -Week Transition-
 
   $(document).on('click','#prev_weeks', function(event){
