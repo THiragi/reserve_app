@@ -8,7 +8,7 @@
   </div>
   <div>
     <%= f.label :room_type_id, "客室タイプ" %>
-    <%= f.number_field :room_type_id, value: @room_type_id %>
+    <%= f.collection_select :room_type_id, RoomType.all, :id, :type_name, value: @room_type_id %>
   </div>
 
   <%= f.submit "客室を作成", data:{confirm: "客室を作成しますか？"} %>
