@@ -5,17 +5,6 @@
 <% l = letters.sample(4).join %>
 <% n = sprintf('%08d', Reservation.count + 1) %>
 
-<% if @reservation.errors.any? %>
-  <div class="errors_explain">
-    <h3><%= @reservation.errors.count %>件のエラーがあります</h3>
-    <ul>
-    <% @reservation.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <%= form_for @reservation do |f| %>
   <%= f.hidden_field :reserve_no, value: l + n %>
       <%= render 'stay_form', f: f %>

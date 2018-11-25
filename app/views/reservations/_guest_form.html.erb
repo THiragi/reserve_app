@@ -1,4 +1,9 @@
 <div class="reserve_form">
+  <% if @reservation.errors.any? %>
+    <div class="errors_explain">
+      <h3><%= @reservation.errors.count %>件のエラーがあります</h3>
+    </div>
+  <% end %>
   <p>予約者情報を入力してください<span style="color: red;">*必須</span></p>
 
   <div>

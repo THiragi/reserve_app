@@ -39,13 +39,6 @@ $(function(){
     $('#confirmMail').text($('#reservation_guest_mail').val());
     $('#confirmPhone').text($('#reservation_guest_phone').val());
     $('#confirmNote').text($('#reservation_stay_note').val());
-    $('#confirmRoom').html($('#inputRoom'));
-    $('#confirmRoomType').html($('#inputRoomType'));
-    $('#confirmInDate').text($('#reservation_check_in_date').val());
-    $('#confirmOutDate').text($('#reservation_check_out_date').val());
-    $('#confirmStayCount').html($('#inputstaycount'));
-    $('#confirmGuestCount').html($('#inputguestcount'));
-    $('#confirmStayAmount').html($('#inputstayamount'));
   }
 
   //Date Validates
@@ -119,13 +112,21 @@ $(function(){
             checkout: $('#checkout').val()
           },
       })
-      .done(function(data){
-        $('#total').html(data);
+      .done(function(data, xhr){
+          alert(xhr.status);
+          $('#total').html(data);
+          console.log(data);
       })
-      .fail(function(){
-        alert('入力されていない項目があります');
+      .fail(function(xhr){
+        alert(xhr.status);
       });
   });
+
+//  if (status == 200){
+//  今までの処理
+//} else if (status == 201) {
+//  返ってきたエラーメッセージを表示する処理
+//}
   //Calendar -Week Transition-
 
   $(document).on('click','#prev_weeks', function(event){
