@@ -112,21 +112,24 @@ $(function(){
             checkout: $('#checkout').val()
           },
       })
-      .done(function(data, xhr){
-          alert(xhr.status);
+      .done(function(data, textStatus, jqXHR){
+        if (jqXHR.status === 200) {
           $('#total').html(data);
-          console.log(data);
+          $('#msg_full').empty();
+          console.log(textStatus);
+          console.log(jqXHR.status);
+        } else if (jqXHR.status === 201) {
+          $('#msg_full').text(data);
+          $('#total').empty();
+          console.log(textStatus);
+          console.log(jqXHR.status);
+        }
       })
-      .fail(function(xhr){
-        alert(xhr.status);
+      .fail(function(){
+        alert('Error!');
       });
   });
 
-//  if (status == 200){
-//  今までの処理
-//} else if (status == 201) {
-//  返ってきたエラーメッセージを表示する処理
-//}
   //Calendar -Week Transition-
 
   $(document).on('click','#prev_weeks', function(event){
