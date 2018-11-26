@@ -1,0 +1,9 @@
+<h2>宿泊料金の変更</h2>
+
+<div class="reserve_form">
+  <%= form_for(@rate, url: admin_rates_path, method: :patch) do |f| %>
+    <%= render 'form', f: f %>
+    <%= f.submit "宿泊料金を変更", class: "btn", data:{confirm: "この内容で変更しますか？"} %>
+  <% end %>
+  <%= link_to '料金一覧に戻る', admin_rates_url %>
+</div>

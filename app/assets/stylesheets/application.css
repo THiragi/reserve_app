@@ -186,25 +186,12 @@ td[class^="past"] {
   background: #bee0ce;
   cursor: pointer;
 }
-.check_form {
-  font-size: 16px;
-}
 
+.check_form,
 .check_form input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
-  font-size: 21px;
+  font-size: 20px;
 }
 
-.check_form input[type="date"], input[type="number"]  {
-  border: none;
-}
-
-.check_form input[type="number"]{
-  width: 40px;
-}
 
 .btn_bars {
   text-align: right;

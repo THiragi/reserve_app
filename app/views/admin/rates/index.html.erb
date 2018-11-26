@@ -13,6 +13,7 @@
         <th>曜日</th>
         <th>優先順位</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -25,7 +26,8 @@
         <td><%= rate.end_date %></td>
         <td><%= rate.weekday %></td>
         <td><%= rate.rank %></td>
-        <td>編集</td>
+        <td><%= link_to "編集", edit_admin_rate_path(rate.id), method: :get %></td>
+        <td><%= link_to "削除", admin_rate_path(rate.id), method: :delete %></td>
       </tr>
     <% end %>
     </tbody>

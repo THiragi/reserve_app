@@ -23,8 +23,8 @@
       <li><div id="msg_checkout"> </div></li>
     </ul>
     <ul>
-      <li><label for="guest_count">人数（定員<span class="capacity"><%= @room_type.capacity %></span>人）：</label></li>
-      <li><input type="number" name="guestcount" id="guestcount" min="1" max="<%= @room_type.capacity %>" value="<%= @room_type.capacity %>" style="width: 28px;"/><span>人</span></li>
+      <li><label for="guest_count">人数：</label></li>
+      <li>（定員<span class="capacity"><%= @room_type.capacity %></span>人）<input type="number" name="guestcount" id="guestcount" min="1" max="<%= @room_type.capacity %>" value="<%= @room_type.capacity %>"/><span>人</span></li>
       <li><div id="msg_guestcount"></div></li>
     </ul>
   </form>

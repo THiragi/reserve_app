@@ -1,0 +1,28 @@
+<div>
+  <%= f.label :rate_type, "料金プラン名" %>
+  <%= f.text_field :rate_type %>
+</div>
+<div>
+  <%= f.label :amount, "金額" %>
+  <%= f.number_field :amount %>
+</div>
+<div>
+  <%= f.label :room_type_id, "部屋タイプ" %>
+  <%= f.collection_select :room_type_id, RoomType.all, :id, :type_name %>
+</div>
+<div>
+  <%= f.label :start_date, "開始日" %>
+  <%= f.date_field :start_date %>
+</div>
+<div>
+  <%= f.label :end_date, "終了日" %>
+  <%= f.date_field :end_date %>
+</div>
+<div>
+  <%= f.label :weekday, "曜日" %>
+  <%= f.select :weekday, [["選択しない", nil],["日曜日", "0"], ["月曜日", "1"], ["火曜日", "2"], ["水曜日", "3"], ["木曜日", "4"], ["金曜日", "5"], ["土曜日", "6"]] %>
+</div>
+<div>
+  <%= f.label :rank, "優先順位" %>
+  <%= f.select :rank, ["1", "2", "3", "4", "5"] %>
+</div>
