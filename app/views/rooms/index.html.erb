@@ -5,7 +5,7 @@
   <li>
     <div class="room_info">
       <h3><%= room_type.type_name %></h3>
-      <a href="">部屋の詳細</a>
+      <%= link_to "部屋の詳細", room_type_path(room_type.id) %>
     </div>
     <div class="room_set">
       <table cellspacing="8px">

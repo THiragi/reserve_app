@@ -2,18 +2,7 @@
 
 <div class="reserve_form">
   <%= form_for(@room_type, url: admin_room_types_path, method: :post) do |f| %>
-  <div>
-    <%= f.label :type_name, "客室タイプ名" %>
-    <%= f.text_field :type_name %>
-  </div>
-  <div>
-    <%= f.label :capacity, "定員数" %>
-    <%= f.number_field :capacity %>
-  </div>
-  <div>
-    <%= f.label :room_note, "説明" %>
-    <%= f.text_area :room_note %>
-  </div>
-  <%= f.submit "客室タイプを作成", data:{confirm: "客室タイプを作成しますか？"} %>
+    <%= render 'form', f: f %>
+    <%= f.submit "客室タイプを作成", data:{confirm: "客室タイプを作成しますか？"} %>
   <% end %>
 </div>
