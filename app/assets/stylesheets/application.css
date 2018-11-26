@@ -249,6 +249,12 @@ div[id^="msg"] {
   color: red;
 }
 
+#msg_full {
+  background: #ffe4e1;
+  color: red;
+  margin-right: 30px;
+}
+
 .result span {
   margin: 0 20px 0 0;
   font-size: 21px;
