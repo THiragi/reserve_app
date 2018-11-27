@@ -14,9 +14,8 @@ class Admin::RoomTypesController < Admin::BaseController
 
   def create
     @room_type = RoomType.new(room_type_params)
-    if @room_type.save
-      redirect_to admin_room_types_url
-    end
+    @room_type.save!
+    redirect_to admin_room_types_url
   end
 
   def edit
@@ -25,7 +24,7 @@ class Admin::RoomTypesController < Admin::BaseController
 
   def update
     @room_type = RoomType.find(params[:id])
-    @room_type.update(room_type_params)
+    @room_type.update!(room_type_params)
     redirect_to admin_room_types_url
   end
 
