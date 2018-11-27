@@ -3,6 +3,6 @@
 <div class="reserve_form">
   <%= form_for(@room_type, url: admin_room_types_path, method: :post) do |f| %>
     <%= render 'form', f: f %>
-    <%= f.submit "客室タイプを作成", data:{confirm: "客室タイプを作成しますか？"} %>
+      <%= f.submit "客室タイプを作成", class: "btn", data:{confirm: "客室タイプを作成しますか？"} %>
   <% end %>
 </div>

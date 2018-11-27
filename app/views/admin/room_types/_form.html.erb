@@ -7,6 +7,10 @@
   <%= f.number_field :capacity %>
 </div>
 <div>
+  <%= f.label :image, "画像" %>
+  <%= f.file_field :image %>
+</div>
+<div>
   <%= f.label :room_note, "説明" %>
   <%= f.text_area :room_note %>
 </div>

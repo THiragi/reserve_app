@@ -38,6 +38,8 @@ gem 'jquery-validation-rails'
 gem 'devise'
 gem 'enum_help'
 gem 'rails-i18n'
+gem 'carrierwave', '1.2.3'
+gem 'mini_magick'
 
 
 group :development, :test do
