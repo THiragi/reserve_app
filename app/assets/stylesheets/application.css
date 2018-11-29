@@ -174,8 +174,14 @@ h2 {
   height: 90px;
 }
 
-td[class^="past"] {
+.calendar-table td[class^="past"] {
   color: gray;
+}
+
+.calendar-table td:hover:not([class^="past"]){
+  cursor: pointer;
+  color: white;
+  background: lightskyblue;
 }
 
 .sunday {

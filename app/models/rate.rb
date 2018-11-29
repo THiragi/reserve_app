@@ -8,7 +8,7 @@ class Rate < ApplicationRecord
   validates :end_date, presence: true
 
   def self.get_amount(room_type_id, date)
-    rates = where(room_type_id: room_type_id).where('(start_date < ? AND end_date > ?)', date, date)
+    rates = where(room_type_id: room_type_id).where('(start_date <= ? AND end_date >= ?)', date, date)
 
     if rates.where(weekday: date.wday).any?
       rates = rates.where(weekday: date.wday)

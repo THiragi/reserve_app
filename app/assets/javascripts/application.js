@@ -20,7 +20,11 @@
 
 $(function(){
 
+// Pick Date
 
+  $()
+
+// Step Form
 
   $('#editConfirm').click(function(){
     getValue();

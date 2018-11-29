@@ -25,7 +25,6 @@
     </tr>
   </thead>
   <tbody>
-
       <% (start..start.weeks_since(2)-1).each do |d| %>
         <% if d.wday == 0 %>
       <tr>
@@ -37,7 +36,7 @@
           date_classes << "saturday" if d.wday == 6
           date_classes << "current" if d == today
         %>
-        <td class="<%= date_classes.join(" ") %>">
+        <td class="<%= date_classes.join(" ")%> datebox" data-id="<%= d %>">
           <%= d.day %><br>
             <% if Reservation.get_reserve(room.id, d) != nil %>
               <span>×</span>
