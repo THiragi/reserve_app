@@ -20,10 +20,6 @@
 
 $(function(){
 
-// Pick Date
-
-  $()
-
 // Step Form
 
   $('#editConfirm').click(function(){
@@ -44,6 +40,29 @@ $(function(){
     $('#confirmPhone').text($('#reservation_guest_phone').val());
     $('#confirmNote').text($('#reservation_stay_note').val());
   }
+
+  // Pick Date
+
+    $('#calendar-area').on('click','.datebox',function(){
+
+      var pickdate = $(this).data('date');
+      var checkin = $('#checkin').val();
+      var checkout = $('#checkout').val();
+
+      if (checkin == ''){
+        $('#checkin').val(pickdate);
+      } else {
+
+        if (pickdate < checkin){
+          $('#checkin').val(pickdate);
+        } else if (pickdate > checkin) {
+          $('#checkout').val(pickdate);
+        }
+
+      }
+
+
+    });
 
   //Date Validates
 
