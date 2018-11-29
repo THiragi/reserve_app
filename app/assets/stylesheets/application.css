@@ -65,16 +65,20 @@ dd {
 /* room_types */
 
 .room_note {
-  width: 360px;
-  margin-right: 20px;
-  float: left;
+  width: 340px;
+  word-wrap: break-word;
+  padding-right: 40px;
 }
 .room_note p {
   margin-top: 0;
 }
 
+.room_detail {
+  display: flex;
+}
 .room_img {
-  float: right;
+  width: 520px;
+  text-align: right;
 }
 
 .no_img {
@@ -194,6 +198,14 @@ h2 {
 .current {
   color: orange;
   background: #f8f4e6;
+}
+
+.datein {
+  background: #C5E6F9;
+}
+
+.dateout {
+  background: #C5E6F9;
 }
 
 .room_rate {

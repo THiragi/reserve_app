@@ -1,14 +1,18 @@
 <% provide(:title, @room_type.type_name) %>
 
 <h2><%= @room_type.type_name %></h2>
-<div class="room_note">
-<p>定員数：<%= @room_type.capacity %>人</p>
-<%= @room_type.room_note %>
-</div>
-
-<% if @room_type.image? %>
-  <%= image_tag @room_type.image.url %>
-<% else %>
-  <div class="no_img">
+<div class="room_detail">
+  <div class="room_note">
+  <p>定員数：<%= @room_type.capacity %>人</p>
+  <%= @room_type.room_note %>
   </div>
-<% end %>
+  <div class="room_img">
+  <% if @room_type.image? %>
+    <%= image_tag @room_type.image.url %>
+  <% else %>
+    <div class="no_img">
+      NO IMAGE
+    </div>
+  <% end %>
+  </div>
+</div>

@@ -41,28 +41,48 @@ $(function(){
     $('#confirmNote').text($('#reservation_stay_note').val());
   }
 
-  // Pick Date
+  // Pick Date (Toggle Version)
 
-    $('#calendar-area').on('click','.datebox',function(){
+  var flag = 0;
+  $('#calendar-area').on('click','.datebox',function(){
+    var pickdate = $(this).data('date');
+    var checkin = $('#checkin').val();
+    var checkout = $('#checkout').val();
 
-      var pickdate = $(this).data('date');
-      var checkin = $('#checkin').val();
-      var checkout = $('#checkout').val();
-
-      if (checkin == ''){
-        $('#checkin').val(pickdate);
+    if (flag == 0) {
+      if (new Date(pickdate) < new Date().setHours(0)){
+        alert('今日より以前は選択できません');
       } else {
-
-        if (pickdate < checkin){
-          $('#checkin').val(pickdate);
-        } else if (pickdate > checkin) {
-          $('#checkout').val(pickdate);
-        }
-
+        $('td').removeClass('datein');
+        $('td').removeClass('dateout');
+        $(this).addClass('datein');
+        $('#checkin').val(pickdate);
+        flag = 1;
+        return;
       }
+    } else if (flag == 1) {
+      if (new Date(pickdate) <= new Date(checkin)) {
+        alert('その日は選択できません');
+      } else {
+        $(this).addClass('dateout');
+        $('#checkout').val(pickdate);
 
+        flag = 0;
+        return;
+      }
+    }
+  });
 
-    });
+  $('#clr').click(function(){
+    $('td').removeClass('datein');
+    $('td').removeClass('dateout');
+    $('#checkin').val('');
+    $('#checkout').val('');
+    $('#msg_full').empty();
+    $('#total').empty();
+    flag = 0;
+    return;
+  });
 
   //Date Validates
 
