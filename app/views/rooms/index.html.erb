@@ -2,26 +2,28 @@
 <h2>客室一覧</h2>
 <ul class="room_list">
   <% @room_types.each do |room_type| %>
-  <li>
-    <div class="room_info">
-      <h3><%= room_type.type_name %></h3>
-      <%= link_to "部屋の詳細", room_type_path(room_type.id) %>
-    </div>
-    <div class="room_set">
-      <table cellspacing="8px">
-      <% @rooms.where(room_type_id: room_type.id).in_groups_of(8)  do |row| %>
-        <tr>
-        <% row.each do |room| %>
-          <% if room %>
-          <td>
-            <strong><%= link_to room.room_name, room, method: :get %></strong><br>予約状況
-          </td>
+    <% if room_type.rooms.any? %>
+    <li>
+      <div class="room_info">
+        <h3><%= room_type.type_name %></h3>
+        <%= link_to "部屋の詳細", room_type_path(room_type.id) %>
+      </div>
+      <div class="room_set">
+        <table cellspacing="8px">
+        <% @rooms.where(room_type_id: room_type.id).in_groups_of(8)  do |row| %>
+          <tr>
+          <% row.each do |room| %>
+            <% if room %>
+            <td>
+              <strong><%= link_to room.room_name, room, method: :get %></strong><br>予約状況
+            </td>
+            <% end %>
           <% end %>
+          </tr>
         <% end %>
-        </tr>
-      <% end %>
-      </table>
-    </div>
-  </li>
+        </table>
+      </div>
+    </li>
+    <% end %>
   <% end %>
 </ul>
