@@ -178,9 +178,17 @@ h2 {
   height: 90px;
 }
 
+.calendar-table td p {
+  font-size: 14px;
+  color: brown;
+  margin: 0;
+}
+
 .calendar-table td[class^="past"] {
   color: gray;
 }
+
+
 
 .calendar-table td:hover:not([class^="past"]){
   cursor: pointer;
@@ -329,6 +337,8 @@ span[class^="msg"] {
 .form_list {
   background: aliceblue;
 }
+
+
 
 /* admin */
 

@@ -55,7 +55,9 @@ $(function(){
       } else {
         $('td').removeClass('datein');
         $('td').removeClass('dateout');
+        $('td > p').empty();
         $(this).addClass('datein');
+        $('.datein > p').text('CheckIn');
         $('#checkin').val(pickdate);
         flag = 1;
         return;
@@ -65,6 +67,7 @@ $(function(){
         alert('その日は選択できません');
       } else {
         $(this).addClass('dateout');
+        $('.dateout > p').text('CheckOut');
         $('#checkout').val(pickdate);
 
         flag = 0;
@@ -79,6 +82,7 @@ $(function(){
     $('#checkin').val('');
     $('#checkout').val('');
     $('#msg_full').empty();
+    $('td > p').empty();
     $('#total').empty();
     flag = 0;
     return;
