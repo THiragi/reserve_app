@@ -59,6 +59,7 @@ $(function(){
         $(this).addClass('datein');
         $('.datein > p').text('CheckIn');
         $('#checkin').val(pickdate);
+        $('#indate_display').text(pickdate);
         flag = 1;
         return;
       }
@@ -69,7 +70,7 @@ $(function(){
         $(this).addClass('dateout');
         $('.dateout > p').text('CheckOut');
         $('#checkout').val(pickdate);
-
+        $('#outdate_display').text(pickdate);
         flag = 0;
         return;
       }

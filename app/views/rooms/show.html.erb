@@ -16,12 +16,14 @@
   <form class="date_form">
     <ul>
       <li><label for="checkin">チェックイン日：</label></li>
-      <li><input type="date" name="checkin" id="checkin" min="<%= today %>" max="<%= today.years_since(3) %>"/></li>
+      <li><input type="hidden" name="checkin" id="checkin" min="<%= today %>" max="<%= today.years_since(3) %>"/></li>
+      <li><div id="indate_display"></div></li>
       <li><div id="msg_checkin"> </div></li>
     </ul>
     <ul>
       <li><label for="checkout">チェックアウト日：</label></li>
-      <li><input type="date" name="checkout" id="checkout"/></li>
+      <li><input type="hidden" name="checkout" id="checkout"/></li>
+      <li><div id="outdate_display"></div></li>
       <li><div id="msg_checkout"> </div></li>
     </ul>
     <ul>
