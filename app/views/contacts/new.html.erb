@@ -1,0 +1,23 @@
+
+<% provide(:title, 'Contact Form') %>
+
+<h2>お問い合わせフォーム</h2>
+<div class="reserve_form">
+    <%= form_for(@contact) do |f| %>
+    <div>
+      <%= f.label :name, "名前" %>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.text_field :email %>
+    </div>
+    <div>
+      <%= f.label :content, "お問い合わせ内容" %>
+      <%= f.text_area :content %>
+    </div>
+    <div>
+      <%= f.submit "送信", class: "btn" %>
+    </div>
+    <% end %>
+</div>

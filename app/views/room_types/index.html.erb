@@ -1,0 +1,23 @@
+<h2>客室タイプ一覧</h2>
+<ul class="room_list">
+  <% @room_types.each do |room_type| %>
+  <li>
+    <h3><%= room_type.type_name %></h3>
+    <div class="room_detail">
+      <div class="room_note">
+      <p>定員数：<%= room_type.capacity %>人</p>
+      <%= room_type.room_note %>
+      </div>
+      <div class="room_img">
+      <% if room_type.image? %>
+        <%= image_tag room_type.image.url %>
+      <% else %>
+        <div class="no_img">
+          NO IMAGE
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </li>
+  <% end %>
+</ul>

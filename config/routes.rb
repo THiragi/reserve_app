@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'contacts/new'
+
   devise_for :admins
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   namespace :admin do
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
       post :prev, :next, :calc
     end
   end
+  resources :contacts
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
 #  get '*path', controller: 'application', action: 'render_404'
