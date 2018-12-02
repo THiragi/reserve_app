@@ -164,13 +164,9 @@ $(function(){
         if (jqXHR.status === 200) {
           $('#total').html(data);
           $('#msg_full').empty();
-          console.log(textStatus);
-          console.log(jqXHR.status);
         } else if (jqXHR.status === 201) {
           $('#msg_full').text(data);
           $('#total').empty();
-          console.log(textStatus);
-          console.log(jqXHR.status);
         }
       })
       .fail(function(){
@@ -214,7 +210,12 @@ $(function(){
 
 
   //Reservation Form Validates
+  // $('#sendConfirm').prop('disabled', true);
 
+  $.validator.addMethod('phoneJP',
+    function(value, element){
+      return this.optional(element) || /^\d{11}$|^\d{3}-\d{4}-\d{4}$/.test(value);
+    });
   $('#new_reservation').validate({
     rules : {
       'reservation[guest_name]': {
@@ -226,11 +227,12 @@ $(function(){
       },
       'reservation[guest_phone]': {
         required: true,
+        phoneJP: true
       }
     },
     messages: {
       'reservation[guest_name]': {
-        required: '*名前を入力してください',
+        required: '*名前を入力してください'
       },
       'reservation[guest_mail]': {
         required: '*メールアドレスを入力してください',
@@ -238,6 +240,7 @@ $(function(){
       },
       'reservation[guest_phone]': {
         required: '*電話番号を入力してください',
+        phoneJP: '*正しい形式で入力してください'
       }
     },
     errorPlacement: function(error, element){
