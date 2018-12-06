@@ -47,7 +47,6 @@ $(function(){
   $('#calendar-area').on('click','.datebox',function(){
     var pickdate = $(this).data('date');
     var checkin = $('#checkin').val();
-    var checkout = $('#checkout').val();
 
     if (flag == 0) {
       if (new Date(pickdate) < new Date().setHours(0)){
@@ -55,6 +54,7 @@ $(function(){
       } else {
         $('td').removeClass('datein');
         $('td').removeClass('dateout');
+        $('td').removeClass('duration');
         $('td > p').empty();
         $(this).addClass('datein');
         $('.datein > p').text('CheckIn');
@@ -71,10 +71,27 @@ $(function(){
         $('.dateout > p').text('CheckOut');
         $('#checkout').val(pickdate);
         $('#outdate_display').text(pickdate);
+        var checkout = $('#checkout').val();
+        var datein = new Date(checkin);
+        var dateout = new Date(checkout);
+        var diff = Math.ceil((dateout - datein) / 86400000) - 1;
+        for (var i = 0; i < diff; ++i) {
+          datein.setDate(datein.getDate() + 1);
+          var y = datein.getFullYear();
+          var m = ("00" + (datein.getMonth()+1)).slice(-2);
+          var d = ("00" + datein.getDate()).slice(-2);
+          var ymd = y + "-" + m + "-" + d;
+          $("td[data-date='"+ ymd +"']").addClass('duration');
+          console.log(ymd);
+
+        }
+
         flag = 0;
         return;
+
       }
     }
+
   });
 
   $('#clr').click(function(){
@@ -202,6 +219,7 @@ $(function(){
       })
       .done(function(respose){
         $('#calendar-area').html(respose);
+
       })
       .fail(function(){
         alert('error!');

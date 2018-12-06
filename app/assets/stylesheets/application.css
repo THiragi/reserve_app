@@ -186,6 +186,7 @@ h2 {
 
 .calendar-table td[class^="past"] {
   color: gray;
+  background: #f5f5f5;
 }
 
 
@@ -216,6 +217,9 @@ h2 {
   background: lavender;
 }
 
+.duration {
+  background: aliceblue;
+}
 .room_rate {
   color: black;
 }
