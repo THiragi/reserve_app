@@ -83,12 +83,9 @@ $(function(){
           var ymd = y + "-" + m + "-" + d;
           $("td[data-date='"+ ymd +"']").addClass('duration');
           console.log(ymd);
-
         }
-
         flag = 0;
         return;
-
       }
     }
 
@@ -97,6 +94,7 @@ $(function(){
   $('#clr').click(function(){
     $('td').removeClass('datein');
     $('td').removeClass('dateout');
+    $('td').removeClass('duration');
     $('#checkin').val('');
     $('#checkout').val('');
     $('#msg_full').empty();
@@ -104,39 +102,6 @@ $(function(){
     $('#total').empty();
     flag = 0;
     return;
-  });
-
-  //Date Validates
-
-  $('#checkin').blur(function() {
-    var checkin = $('#checkin').val();
-    if (checkin != ''){
-      if (new Date(checkin) < new Date().setHours(0)){
-        $('#msg_checkin').text('※今日より以前は選択できません');
-        setTimeout(function() {
-            $('#checkin').focus();
-            $('#checkin').select();
-        }, 1);
-      } else {
-        $('#msg_checkin').empty();
-      }
-    }
-  });
-
-  $('#checkout').blur(function() {
-    var checkin = $('#checkin').val();
-    var checkout = $('#checkout').val();
-    if (checkout != ''){
-      if (new Date(checkout) <= new Date(checkin)){
-        $('#msg_checkout').text('※その日付は選択できません');
-        setTimeout(function() {
-            $('#checkout').focus();
-            $('#checkout').select();
-        }, 1);
-      } else {
-        $('#msg_checkout').empty();
-      }
-    }
   });
 
   //Guestcount Validate
