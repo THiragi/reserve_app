@@ -8,25 +8,37 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @room_type = @room.room_type
     @start = Date.today.beginning_of_week(:sunday)
+    @bpoint = 0
   end
 
   def prev
     @room = Room.find(params[:id])
     @room_type = @room.room_type
     Rails.logger.debug("##################")
-    Rails.logger.debug(params[:date])
-    @start = Date.parse(params[:date]).weeks_ago(2)
+    Rails.logger.debug(params[:prevstart])
+    @start = Date.parse(params[:prevstart]).weeks_ago(2)
+    @bpoint = (params[:bpoint]).to_i
+    @bpoint -= 1
     Rails.logger.debug(@start)
+    Rails.logger.debug(@bpoint)
 
-    render partial: 'calendar', locals: {start: @start, room: @room, room_type: @room_type}
+    render partial: 'calendar', locals: {start: @start, room: @room, room_type: @room_type, bpoint: @bpoint}
 
   end
 
   def next
     @room = Room.find(params[:id])
     @room_type = @room.room_type
-    @start = Date.parse(params[:date]).weeks_since(2)
-    render partial: 'calendar', locals: {start: @start, room: @room, room_type: @room_type}
+    Rails.logger.debug("##################")
+    Rails.logger.debug(params[:nextstart])
+    @start = Date.parse(params[:nextstart]).weeks_since(2)
+    @bpoint = (params[:bpoint]).to_i
+    @bpoint += 1
+    Rails.logger.debug(@start)
+    Rails.logger.debug(@bpoint)
+
+    render partial: 'calendar', locals: {start: @start, room: @room, room_type: @room_type, bpoint: @bpoint}
+
   end
 
   def calc

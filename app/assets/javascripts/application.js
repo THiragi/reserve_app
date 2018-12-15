@@ -158,12 +158,13 @@ $(function(){
 
   //Calendar -Week Transition-
 
-  $(document).on('click','#prev_weeks', function(event){
+  $(document).on('click','.prev_weeks', function(event){
       $.ajax({
           url: '/rooms/' + id + '/prev',
           type:'POST',
           data:{
-            date: $('#date').val()
+            prevstart: $('#prevstart').val(),
+            bpoint: $('#bpoint').val()
           },
       })
       .done(function(respose){
@@ -174,16 +175,17 @@ $(function(){
       });
   });
 
-  $(document).on('click','#next_weeks', function(event){
+  $(document).on('click','.next_weeks', function(event){
       $.ajax({
           url: '/rooms/' + id + '/next',
           type:'POST',
           data:{
-            date: $('#date').val()
+            nextstart: $('#nextstart').val(),
+            bpoint: $('#bpoint').val()
           },
       })
       .done(function(respose){
-        $('#calendar-area').append(respose);
+        $('#calendar-area').prepend(respose);
 
       })
       .fail(function(){

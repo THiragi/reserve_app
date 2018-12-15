@@ -4,41 +4,10 @@
 <h2><%= @room.room_name %> -<%= @room_type.type_name %>- の予約状況</h2>
 
 <div class="content">
-  <div class="icon">
-  <button id="prev_weeks">
-    <%= hidden_field_tag :date, @start %>
-    ▲
-  </button>
+
+  <div id="calendar-area">
+    <%= render partial: 'calendar', locals: {start: @start, room: @room, room_type: @room_type, bpoint: @bpoint}%>
   </div>
-  <table class="calendar-table">
-    <caption >
-      <% if (@start..@start.weeks_since(2)-1).include?(today) %>
-        <%= today.strftime('%Y年%m月') %>
-      <% else %>
-        <%= start.strftime('%Y年%m月') %>
-      <% end %>
-    </caption>
-    <thead>
-      <tr>
-        <th style="color: #dc6b9a;">日</th>
-        <th>月</th>
-        <th>火</th>
-        <th>水</th>
-        <th>木</th>
-        <th>金</th>
-        <th style="color: #4496d3;">土</th>
-      </tr>
-    </thead>
-    <tbody id="calendar-area">
-      <%= render partial: 'calendar', locals: {start: @start, room: @room, room_type: @room_type}%>
-    </tbody>
-  </table>
-<div class="icon">
-<button id="next_weeks">
-<%= hidden_field_tag :date, @start %>
-▼
-</button>
-</div>
 
 <div class="check_form">
   <div id="date_checkin">
