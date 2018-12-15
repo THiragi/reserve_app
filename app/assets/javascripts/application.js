@@ -167,7 +167,7 @@ $(function(){
           },
       })
       .done(function(respose){
-        $('#calendar-area').html(respose);
+        $('#calendar-area').prepend(respose);
       })
       .fail(function(){
         alert('error!');
@@ -183,7 +183,7 @@ $(function(){
           },
       })
       .done(function(respose){
-        $('#calendar-area').html(respose);
+        $('#calendar-area').append(respose);
 
       })
       .fail(function(){
