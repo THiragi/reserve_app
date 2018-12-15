@@ -1,63 +1,29 @@
 <% today = Date.today %>
-<div class="icon">
-<button id="prev_weeks">
-  <%= hidden_field_tag :date, start %>
-  ▲
-</button>
-</div>
-<table class="calendar-table">
-  <caption >
-    <% if (start..start.weeks_since(2)-1).include?(today) %>
-      <%= today.strftime('%Y年%m月') %>
-    <% else %>
-      <%= start.strftime('%Y年%m月') %>
-    <% end %>
-  </caption>
-  <thead>
+<% (start..start.weeks_since(2)-1).each do |d| %>
+  <% if d.wday == 0 %>
     <tr>
-      <th style="color: #dc6b9a;">日</th>
-      <th>月</th>
-      <th>火</th>
-      <th>水</th>
-      <th>木</th>
-      <th>金</th>
-      <th style="color: #4496d3;">土</th>
-    </tr>
-  </thead>
-  <tbody>
-      <% (start..start.weeks_since(2)-1).each do |d| %>
-        <% if d.wday == 0 %>
-      <tr>
-        <% end %>
-        <%
-          date_classes = []
-          date_classes << "past" if d < today
-          date_classes << "sunday" if d.wday == 0
-          date_classes << "saturday" if d.wday == 6
-          date_classes << "current" if d == today
-        %>
-        <td class="<%= date_classes.join(" ")%> datebox" data-date="<%= d %>">
-          <%= d.day %><br>
-            <% if Reservation.get_reserve(room.id, d) != nil %>
+  <% end %>
+    <%
+      date_classes = []
+      date_classes << "past" if d < today
+      date_classes << "sunday" if d.wday == 0
+      date_classes << "saturday" if d.wday == 6
+      date_classes << "current" if d == today
+    %>
+      <td class="<%= date_classes.join(" ")%> datebox" data-date="<%= d %>">
+        <%= d.day %><br>
+          <% if Reservation.get_reserve(room.id, d) != nil %>
+            <span>×</span>
+          <% else %>
+            <% if Rate.get_amount(room_type, d) == nil %>
               <span>×</span>
             <% else %>
-              <% if Rate.get_amount(room_type, d) == nil %>
-                <span>×</span>
-              <% else %>
-                <span><%= Rate.get_amount(room_type, d).amount.to_s(:delimited) %>円</span>
-              <% end %>
+              <span><%= Rate.get_amount(room_type, d).amount.to_s(:delimited) %>円</span>
             <% end %>
-            <p></p>
-        </td>
-        <% if d.wday == 6 %>
-      </tr>
-        <% end %>
-      <% end %>
-  </tbody>
-</table>
-<div class="icon">
-<button id="next_weeks">
-  <%= hidden_field_tag :date, start %>
-  ▼
-</button>
-</div>
+          <% end %>
+          <p></p>
+      </td>
+  <% if d.wday == 6 %>
+    </tr>
+  <% end %>
+<% end %>
