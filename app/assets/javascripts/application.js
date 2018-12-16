@@ -159,38 +159,84 @@ $(function(){
   //Calendar -Week Transition-
 
   $(document).on('click','.prev_weeks', function(event){
+
+    var current = parseInt($(this).parent().parent().attr('data-num'));
+    var prev = current - 1;
+    var prevstart = $(this).children().val();
+    var setnum = $(this).parent().parent().find('input').val();
+    var prevcheck = $('div').hasClass('weeks_set_' + prev);
+
+    if (prevcheck) {
+        $("div[data-num='"+ current +"']").css('display','none');
+        $("div[data-num='"+ prev +"']").css('display','block');
+        console.log(current);
+        console.log(prev);
+        console.log(setnum);
+        console.log(prevstart);
+        console.log(prevcheck);
+    } else {
       $.ajax({
           url: '/rooms/' + id + '/prev',
           type:'POST',
           data:{
-            prevstart: $('#prevstart').val(),
-            bpoint: $('#bpoint').val()
+            prevstart: $(this).children().val(),
+            setnum: $(this).parent().parent().find('input').val()
           },
       })
       .done(function(respose){
         $('#calendar-area').prepend(respose);
+        $("div[data-num='"+ current +"']").css('display','none');
+        console.log(current);
+        console.log(prev);
+        console.log(setnum);
+        console.log(prevstart);
+        console.log(prevcheck);
       })
       .fail(function(){
         alert('error!');
       });
+    }
+
   });
 
   $(document).on('click','.next_weeks', function(event){
+    var current = parseInt($(this).parent().parent().attr('data-num'));
+    var next = current + 1;
+    var nextstart = $(this).children().val();
+    var setnum = $(this).parent().parent().find('input').val();
+    var nextcheck = $('div').hasClass('weeks_set_' + next);
+
+    if (nextcheck) {
+      $("div[data-num='"+ current +"']").css('display','none');
+      $("div[data-num='"+ next +"']").css('display','block');
+      console.log(current);
+      console.log(next);
+      console.log(setnum);
+      console.log(nextstart);
+      console.log(nextcheck);
+    } else {
       $.ajax({
           url: '/rooms/' + id + '/next',
           type:'POST',
           data:{
-            nextstart: $('#nextstart').val(),
-            bpoint: $('#bpoint').val()
+            nextstart: $(this).children().val(),
+            setnum: $(this).parent().parent().find('input').val()
           },
       })
       .done(function(respose){
         $('#calendar-area').prepend(respose);
-
+        $("div[data-num='"+ current +"']").css('display','none');
+        console.log(current);
+        console.log(next);
+        console.log(setnum);
+        console.log(nextstart);        
+        console.log(nextcheck);
       })
       .fail(function(){
         alert('error!');
       });
+    }
+
   });
 
 
