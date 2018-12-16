@@ -224,12 +224,12 @@ $(function(){
           },
       })
       .done(function(respose){
-        $('#calendar-area').prepend(respose);
+        $('#calendar-area').append(respose);
         $("div[data-num='"+ current +"']").css('display','none');
         console.log(current);
         console.log(next);
         console.log(setnum);
-        console.log(nextstart);        
+        console.log(nextstart);
         console.log(nextcheck);
       })
       .fail(function(){
