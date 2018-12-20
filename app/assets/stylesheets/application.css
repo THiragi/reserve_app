@@ -157,7 +157,7 @@ h2 {
 
 /* calendar */
 .calendar-table {
-  margin: 0 auto;
+  margin-bottom:30px;
   font-size: 20px;
   border-bottom: 1px solid dimgray;
 }
@@ -189,12 +189,15 @@ h2 {
   background: #f5f5f5;
 }
 
-
-
 .calendar-table td:hover:not([class^="past"]){
   cursor: pointer;
   color: white;
   background: lightskyblue;
+}
+
+#msg_inst {
+  font-size: 18px;
+  color:lightseagreen;
 }
 
 .sunday {
@@ -225,7 +228,6 @@ h2 {
 }
 .icon {
   text-align: center;
-  margin-top: 32px;
 }
 button[class^="prev_weeks"],
 button[class^="next_weeks"] {
@@ -288,8 +290,6 @@ button[class^="next_weeks"] {
 }
 
 div[id^="msg"] {
-  background: #ffe4e1;
-  color: red;
 }
 
 #msg_full {

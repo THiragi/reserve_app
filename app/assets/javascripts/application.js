@@ -51,6 +51,16 @@ $(function(){
     if (flag == 0) {
       if (new Date(pickdate) < new Date().setHours(0)){
         alert('今日より以前は選択できません');
+      } else if ($(this).hasClass('dateout')) {
+        $(this).removeClass('dateout');
+        $(this).children('p').empty();
+        $('td').removeClass('duration');
+        $('#outdate_display').empty();
+        $('#checkout').val('');
+        $('#msg_inst').empty();
+        $('#msg_inst').text('チェックアウト日を選択してください');
+        flag = 1;
+        return;
       } else {
         $('td').removeClass('datein');
         $('td').removeClass('dateout');
@@ -60,17 +70,30 @@ $(function(){
         $('.datein > p').text('CheckIn');
         $('#checkin').val(pickdate);
         $('#indate_display').text(pickdate);
+        $('#msg_inst').empty();
+        $('#msg_inst').text('チェックアウト日を選択してください');
         flag = 1;
         return;
       }
     } else if (flag == 1) {
-      if (new Date(pickdate) <= new Date(checkin)) {
+      if (new Date(pickdate) < new Date(checkin)) {
         alert('その日は選択できません');
+      } else if ($(this).hasClass('datein')) {
+        $(this).removeClass('datein');
+        $('td > p').empty();
+        $('#indate_display').empty();
+        $('#checkin').val('');
+        $('#msg_inst').empty();
+        $('#msg_inst').text('チェックイン日を選択してください');
+        flag = 0;
+        return;
       } else {
         $(this).addClass('dateout');
         $('.dateout > p').text('CheckOut');
         $('#checkout').val(pickdate);
         $('#outdate_display').text(pickdate);
+        $('#msg_inst').empty();
+        $('#msg_inst').text('"料金を計算する"をクリックしてください');
         var checkout = $('#checkout').val();
         var datein = new Date(checkin);
         var dateout = new Date(checkout);
@@ -97,9 +120,13 @@ $(function(){
     $('td').removeClass('duration');
     $('#checkin').val('');
     $('#checkout').val('');
+    $('#indate_display').empty();
+    $('#outdate_display').empty();
     $('#msg_full').empty();
     $('td > p').empty();
     $('#total').empty();
+    $('#msg_inst').empty();
+    $('#msg_inst').text('チェックイン日を選択してください');
     flag = 0;
     return;
   });

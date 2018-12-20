@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :room_types
     resources :rooms
     resources :rates
+    resources :aggregations
   end
 
   root 'rooms#index'

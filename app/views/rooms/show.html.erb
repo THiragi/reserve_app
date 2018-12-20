@@ -4,41 +4,44 @@
 <h2><%= @room.room_name %> -<%= @room_type.type_name %>- の予約状況</h2>
 
 <div class="content">
-
+  <div id="msg_inst">
+    チェックイン日を選んでください
+  </div>
   <div id="calendar-area">
     <%= render partial: 'calendar', locals: {start: @start, room: @room, room_type: @room_type, setnum: @setnum}%>
   </div>
 
-<div class="check_form">
-  <div id="date_checkin">
-  </div>
+  <div class="check_form">
+    <div id="date_checkin">
+    </div>
 
-  <form class="date_form">
-    <ul>
-      <li><label for="checkin">チェックイン日：</label></li>
-      <li><input type="hidden" name="checkin" id="checkin" min="<%= today %>" max="<%= today.years_since(3) %>"/></li>
-      <li><div id="indate_display"></div></li>
-      <li><div id="msg_checkin"> </div></li>
-    </ul>
-    <ul>
-      <li><label for="checkout">チェックアウト日：</label></li>
-      <li><input type="hidden" name="checkout" id="checkout"/></li>
-      <li><div id="outdate_display"></div></li>
-      <li><div id="msg_checkout"> </div></li>
-    </ul>
-    <ul>
-      <li><label for="guest_count">人数：</label></li>
-      <li>（定員<span class="capacity"><%= @room_type.capacity %></span>人）<input type="number" name="guestcount" id="guestcount" min="1" max="<%= @room_type.capacity %>" value="<%= @room_type.capacity %>"/><span>人</span></li>
-      <li><div id="msg_guestcount"></div></li>
-    </ul>
-  </form>
+    <form class="date_form">
+      <ul>
+        <li><label for="checkin">チェックイン日：</label></li>
+        <li><input type="hidden" name="checkin" id="checkin" min="<%= today %>" max="<%= today.years_since(3) %>"/></li>
+        <li><div id="indate_display"></div></li>
+        <li><div id="msg_checkin"> </div></li>
+      </ul>
+      <ul>
+        <li><label for="checkout">チェックアウト日：</label></li>
+        <li><input type="hidden" name="checkout" id="checkout"/></li>
+        <li><div id="outdate_display"></div></li>
+        <li><div id="msg_checkout"> </div></li>
+      </ul>
+      <ul>
+        <li><label for="guest_count">人数：</label></li>
+        <li>（定員<span class="capacity"><%= @room_type.capacity %></span>人）<input type="number" name="guestcount" id="guestcount" min="1" max="<%= @room_type.capacity %>" value="<%= @room_type.capacity %>"/><span>人</span></li>
+        <li><div id="msg_guestcount"></div></li>
+      </ul>
+    </form>
 
 
-  <div class="btn_bars">
-    <span id="msg_full"></span>
-    <input type="button" id="clr" class="btn" value="入力内容をクリア"/>
-    <input type="button" id="calc" class="btn" value="料金を計算する"/>
-  </div>
-  <div id="total">
+    <div class="btn_bars">
+      <span id="msg_full"></span>
+      <input type="button" id="clr" class="btn" value="入力内容をクリア"/>
+      <input type="button" id="calc" class="btn" value="料金を計算する"/>
+    </div>
+    <div id="total">
+    </div>
   </div>
 </div>
