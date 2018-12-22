@@ -5,14 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Admin.create(email: "admin@gmail.com", password: 'administer')
 
-RoomType.create(type_name: "Single", capacity: "1")
-
-10.times do |i|
-  Room.create(
-      room_type_id: "1",
-      room_name: "#{101+i}")
+5.times do |i|
+  Reservation.create!(
+    reserve_no: "zzzz0222200#{i}",
+    guest_name: "backpacker#{i}",
+    guest_phone: "0808888000#{i}",
+    guest_mail: "example2#{i}@gmail.com",
+    check_in_date: "2018-12-22",
+    check_out_date: "2018-12-23",
+    room_id: "#{2+i}",
+    guest_count: "1",
+    status: "apply")
 end
-
-Rate.create(rate_type: "Standard18SNGL", amount: "5400", rank: "5", start_date: "2018-11-01", end_date: "2018-12-31", room_type_id: "1")
