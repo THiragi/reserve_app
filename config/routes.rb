@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     resources :room_types
     resources :rooms
     resources :rates
-    resources :aggregations
+    resources :aggregations do
+      collection do
+        get :month, :day
+      end
+    end
   end
 
   root 'rooms#index'

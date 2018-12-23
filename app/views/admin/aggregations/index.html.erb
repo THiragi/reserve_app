@@ -1,4 +1,5 @@
+<% provide(:title) %>
 <h2>集計項目一覧</h2>
 
-<p>月別集計</p>
-<p>日別集計</p>
+<%= link_to "月別売上集計", month_admin_aggregations_url, method: :get %>
+<%= link_to "日別売上集計", day_admin_aggregations_url, method: :get %>
