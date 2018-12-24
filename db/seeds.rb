@@ -12,9 +12,9 @@
     guest_name: "guest#{i}",
     guest_phone: "0808888000#{i}",
     guest_mail: "example2#{i}@gmail.com",
-    check_in_date: "2018-12-22",
-    check_out_date: "2018-12-23",
+    check_in_date: "2018-12-24",
+    check_out_date: "2018-12-25",
     room_id: "#{2+i}",
     guest_count: "1",
-    status: "leave")
+    status: "arrive")
 end
