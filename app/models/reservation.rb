@@ -45,7 +45,7 @@ class Reservation < ApplicationRecord
   end
 
   def self.aggregate(term)
-    Reservation.where(status: "leave").where('check_in_date = ?', term)
+    Reservation.where('check_in_date = ?', term)
   end
 
 
