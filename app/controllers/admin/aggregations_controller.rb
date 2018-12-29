@@ -6,12 +6,7 @@ class Admin::AggregationsController < Admin::BaseController
   end
 
   def day
-    if params[:day].present?
-      @date = Date.parse(params[:day])
-    else
-      @date = Date.today
-    end
-    @reservations = Reservation.aggregate(@date)
+    @reservations = Reservation.all
   end
 
 end

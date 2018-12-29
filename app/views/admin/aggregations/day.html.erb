@@ -1,42 +1,38 @@
 <% provide(:title) %>
 <h2>日別売上集計</h2>
 <div class="panel_area">
-  <p>日付を選択してください</p>
-  <%= form_tag(day_admin_aggregations_path, method: 'get') do %>
-    <%= date_field_tag :day %>
-    <%= submit_tag '表示' %>
-  <% end %>
 
-  <h3><%= @date.strftime('%Y年%m月%d日') %>の売上集計</h3>
-  <% room_sum = Room.count %>
-  <% reserve_sum = @reservations.count %>
-  <p>販売室数：<%= reserve_sum %></p>
-  <p>客室稼働率：<%= number_to_percentage((reserve_sum /room_sum.to_f)*100) %></p>
-  <p>宿泊人数：<%= @reservations.sum(:guest_count) %></p>
+  <% today = Date.today %>
+  <% month = today.beginning_of_month..today.end_of_month %>
+  <canvas id="daily_chart"></canvas>
   <table>
     <thead>
       <tr>
-        <td>予約番号</td>
-        <td>予約者名</td>
-        <td>客室名</td>
-        <td>チェックイン日</td>
-        <td>チェックアウト日</td>
-        <td>人数</td>
-        <td>宿泊料金</td>
+        <th>日付</th>
+        <th>宿泊人数</th>
+        <th>販売客室数</th>
+        <th>客室稼働率</th>
+        <th>売上金額</th>
       </tr>
     </thead>
     <tbody>
-    <% @reservations.each do |reserve| %>
+      <% month.each do |d| %>
       <tr>
-        <td><%= reserve.reserve_no %></td>
-        <td><%= reserve.guest_name %></td>
-        <td><%= Room.find(reserve.room_id).room_name %></td>
-        <td><%= reserve.check_in_date %></td>
-        <td><%= reserve.check_out_date %></td>
-        <td><%= reserve.guest_count %></td>
-        <td><%= Rate.get_amount(Room.find(reserve.room_id).room_type_id, reserve.check_in_date).amount %></td>
+        <% reserves = Reservation.get_by_date(d) %>
+        <td><%= d %></td>
+        <td><%= reserves.sum(:guest_count) %></td>
+        <td><%= reserves.count %></td>
+        <td><%= number_to_percentage(((reserves.sum(:guest_count))/((Room.count).to_f))*100) %></td>
+        <td>
+          <% total = 0 %>
+          <% reserves.each do |r| %>
+            <% room_type = Room.find(r.room_id).room_type_id %>
+            <% total += Rate.get_amount(room_type, d).amount %>
+          <% end %>
+          <%= total %>
+        </td>
       </tr>
-    <% end %>
+      <% end %>
     </tbody>
   </table>
 </div>

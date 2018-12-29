@@ -40,17 +40,16 @@ class Reservation < ApplicationRecord
     reserves.find_by('check_in_date <= ? AND check_out_date > ?', date, date)
   end
 
+  def self.get_by_date(date)
+    where('check_in_date <= ? AND check_out_date > ?', date, date)
+  end
+
   def self.search(search)
-    Reservation.where('reserve_no = ?', search)
+    where('reserve_no = ?', search)
   end
-
-  def self.aggregate(term)
-    Reservation.where('check_in_date = ?', term)
-  end
-
 
   def self.date_check(room_id, in_date, out_date)
-    Reservation.where(room_id: room_id).where('check_in_date < ? AND ? < check_out_date', out_date, in_date)
+    where(room_id: room_id).where('check_in_date < ? AND ? < check_out_date', out_date, in_date)
   end
 
 end
