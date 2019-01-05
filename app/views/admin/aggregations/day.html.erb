@@ -17,13 +17,13 @@
     </thead>
     <tbody>
       <% month.each do |d| %>
-      <tr>
+      <tr class="per_day">
         <% reserves = Reservation.get_by_date(d) %>
-        <td><%= d %></td>
-        <td><%= reserves.sum(:guest_count) %></td>
-        <td><%= reserves.count %></td>
-        <td><%= number_to_percentage(((reserves.sum(:guest_count))/((Room.count).to_f))*100) %></td>
-        <td>
+        <td class="date_tag"><%= d %></td>
+        <td class="guest_tag"><%= reserves.sum(:guest_count) %></td>
+        <td class="room_tag"><%= reserves.count %></td>
+        <td><%= number_to_percentage(((reserves.count)/((Room.count).to_f))*100) %></td>
+        <td class="sale_tag">
           <% total = 0 %>
           <% reserves.each do |r| %>
             <% room_type = Room.find(r.room_id).room_type_id %>

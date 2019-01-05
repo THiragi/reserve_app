@@ -17,7 +17,7 @@ class Reservation < ApplicationRecord
   validate :reserves_overlap
 
   def reserves_overlap
-     reservations = Reservation.where(room_id: self.id).where('check_in_date < ? AND ? < check_out_date', self.check_out_date, self.check_in_date)
+     reservations = Reservation.where(room_id: self.id).where('check_in_date <= ? AND ? <= check_out_date', self.check_out_date, self.check_in_date)
      reservations = reservations.where.not(id: self.id) if !self.new_record?
 
      errors.add(:check_in_date, "その期間はすでに予約が入っています") if reservations.any?
