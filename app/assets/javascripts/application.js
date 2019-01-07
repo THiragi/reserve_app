@@ -313,63 +313,66 @@ $(function(){
     }
   });
 
-// Chart
-if ($('canvas').length){
-
-    var date = [];
-    $('.date_tag').each(function(){
-      date.push(
-        new Date($(this).text()).getDate()
-      );
-    });
-
-    var guests = [];
-    $('.guest_tag').each(function(){
-      guests.push($(this).text());
-    });
-
-    var rooms = [];
-    $('.room_tag').each(function(){
-      rooms.push($(this).text());
-    });
-
-    var sales = [];
-    $('.sale_tag').each(function(){
-      sales.push(($(this).text()/1000));
-    });
-
-    var ctx = document.getElementById('daily_chart').getContext('2d');
-    var chart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: date,
-        datasets: [
-          {
-            label: "宿泊人数",
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: guests,
-          },
-          {
-            label: "販売客室数",
-            backgroundColor: 'rgb(54,164,235)',
-            borderColor: 'rgb(54, 164, 235)',
-            data: rooms,
-          },
-          {
-            label: "売上金額",
-            borderColor: 'rgb(255, 215, 0)',
-            data: sales,
-            type: 'line',
-          }
-
-      ]
-      }
-
-    });
 
 
-}
+  // Chart
+  $('#table_toggle').click(function(){
+    $('.agg_table').slideToggle();
+  });
+
+  if ($('canvas').length){
+
+      var date = [];
+      $('.date_tag').each(function(){
+        date.push(
+          new Date($(this).text()).getDate()
+        );
+      });
+
+      var guests = [];
+      $('.guest_tag').each(function(){
+        guests.push($(this).text());
+      });
+
+      var rooms = [];
+      $('.room_tag').each(function(){
+        rooms.push($(this).text());
+      });
+
+      var sales = [];
+      $('.sale_tag').each(function(){
+        sales.push(($(this).text()/1000));
+      });
+
+      var ctx = document.getElementById('daily_chart').getContext('2d');
+      var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: date,
+          datasets: [
+            {
+              label: "宿泊人数",
+              backgroundColor: 'rgb(255, 99, 132)',
+              borderColor: 'rgb(255, 99, 132)',
+              data: guests,
+            },
+            {
+              label: "販売客室数",
+              backgroundColor: 'rgb(54,164,235)',
+              borderColor: 'rgb(54, 164, 235)',
+              data: rooms,
+            },
+            {
+              label: "売上金額",
+              borderColor: 'rgb(255, 215, 0)',
+              data: sales,
+              type: 'line',
+            }
+          ]
+        }
+      });
+
+    }
 
 
 

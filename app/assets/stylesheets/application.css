@@ -17,36 +17,73 @@
 /* header */
 
 header {
-  color: white;
+  text-align: center;
   margin-top: 0;
-  height: 80px;
   width:100%;
-  line-height: 80px;
-  background: #404040;
+
 }
 
+
 .logo {
-  float:left;
-  padding: 0 20px;
-  font-size: 36px;
+  line-height: 110px;
+  color: #404040;
+  padding: 0;
+  font-size: 48px;
   font-weight: bold;
   text-decoration: none;
 }
 
-header a {
+
+.menu {
+  line-height: 40px;
+  height: 40px;
+  width: auto;
   color: white;
+  background: #404040;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+	justify-content: center;
 }
 
-
-header nav ul {
-  text-align: center;
-  margin-top: 0;
-}
-
-header nav ul li {
-  padding: 0 20px;
+.menu li {
+  position: relative;
   border-left: white solid 1px;
-  display: inline;
+  list-style: none;
+}
+
+.menu li:last-child {
+  border-right: white solid 1px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: white;
+  display :block;
+  width: 140px;
+  text-align: center;
+}
+
+.menu li a:hover {
+  color: orange;
+  background: gray;
+}
+
+.menu li ul {
+  top:40px;
+  left: -40px;
+  position: absolute;
+}
+
+.menu li ul li {
+  overflow: hidden;
+  height: 0;
+}
+
+.menu li:hover ul li {
+  overflow: visible;
+  height: 40px;
+  background: dimgray;
 }
 
 /* body */
