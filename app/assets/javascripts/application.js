@@ -16,6 +16,7 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
 //= require Chart.min
 
