@@ -341,7 +341,7 @@ $(function(){
 
       var sales = [];
       $('.sale_tag').each(function(){
-        sales.push(($(this).text()/1000));
+        sales.push($(this).text());
       });
 
       var ctx = document.getElementById('daily_chart').getContext('2d');
@@ -351,25 +351,55 @@ $(function(){
           labels: date,
           datasets: [
             {
+              type: 'bar',
               label: "宿泊人数",
               backgroundColor: 'rgb(255, 99, 132)',
               borderColor: 'rgb(255, 99, 132)',
               data: guests,
+              yAxisID: "y-axis-1",
             },
             {
+              type: 'bar',
               label: "販売客室数",
               backgroundColor: 'rgb(54,164,235)',
               borderColor: 'rgb(54, 164, 235)',
               data: rooms,
+              yAxisID: "y-axis-1",
             },
             {
+              type: 'line',
               label: "売上金額",
               borderColor: 'rgb(255, 215, 0)',
               data: sales,
-              type: 'line',
+              yAxisID: "y-axis-2",
             }
           ]
-        }
+        },
+        options: {
+          responsive: true,
+          scales: {
+            yAxes: [{
+              id: "y-axis-1",
+              type: "linear",
+              position: "left",
+              ticks: {
+                max: 30,
+                min: 0,
+                stepSize: 1
+              },
+            }, {
+              id: "y-axis-2",
+              type: "linear",
+              position: "right",
+              ticks: {
+                max: 100000,
+                min: 0,
+                stepSize: 10000
+              },
+            }],
+          }
+        },
+
       });
 
     }
