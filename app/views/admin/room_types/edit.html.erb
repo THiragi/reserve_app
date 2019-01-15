@@ -3,6 +3,6 @@
 <div class="reserve_form">
   <%= form_for(@room_type, url: admin_room_type_path, method: :patch) do |f| %>
     <%= render 'form', f: f %>
-    <%= f.submit "設定を変更", class:"btn",  data:{confirm: "設定を変更しますか？"} %>
+    <%= f.submit "設定を変更", class:"btn btn-primary",  data:{confirm: "設定を変更しますか？"} %>
   <% end %>
 </div>

@@ -11,6 +11,6 @@
     <%= f.collection_select :room_type_id, RoomType.all, :id, :type_name, value: @room_type_id %>
   </div>
 
-  <%= f.submit "客室を作成", data:{confirm: "客室を作成しますか？"} %>
+  <%= f.submit "客室を作成", data:{confirm: "客室を作成しますか？"}, class: "btn btn-primary" %>
   <% end %>
 </div>

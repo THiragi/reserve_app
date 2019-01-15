@@ -65,8 +65,8 @@
     <div class="btn_bars">
 
 
-        <%= f.submit "予約内容を変更する", class: "btn", data:{confirm: "予約内容を変更します。よろしいですか？"}  %>
+        <%= f.submit "予約内容を変更する", class: "btn btn-success", data:{confirm: "予約内容を変更します。よろしいですか？"}  %>
   <% end %>
-        <%= button_to "予約をキャンセルする", cancel_reservation_path(@reservation.id), method: :patch, class: "btn", data:{confirm: "予約をキャンセルします。よろしいですか？"} %>
+        <%= button_to "予約をキャンセルする", cancel_reservation_path(@reservation.id), method: :patch, class: "btn btn-danger", data:{confirm: "予約をキャンセルします。よろしいですか？"} %>
     </div>
 </div>

@@ -21,7 +21,7 @@
       <td><%= reserve.status_i18n %></td>
       <td>
         <%= render partial: "status_btn", locals:{reserve: reserve} %>
-        <%= link_to "詳細", admin_reservation_path(reserve.id), method: :get %>
+        <%= link_to "詳細", admin_reservation_path(reserve.id), method: :get, class: "btn btn-xs btn-default" %>
       </td>
     </tr>
     <% end %>

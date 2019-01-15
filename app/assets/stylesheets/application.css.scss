@@ -10,10 +10,10 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ */
  @import "bootstrap-sprockets";
  @import "bootstrap";
- @import "partials/*";
- */
+
 
 /* header */
 
@@ -292,22 +292,22 @@ button[class^="next_weeks"] {
 .btn_bars {
   text-align: right;
 }
-
-.btn {
-  font-size: 21px;
-  display: inline-block;
-  margin: 15px 0;
-  border: 3px solid black;
-  border-radius: 8px;
-  padding: 6px 12px;
-}
-
-.btn:hover{
-  border-color: gray;
-  background: dimgray;
-  cursor: pointer;
-  color: white;
-}
+//
+// .btn {
+//   font-size: 21px;
+//   display: inline-block;
+//   margin: 15px 0;
+//   border: 3px solid black;
+//   border-radius: 8px;
+//   padding: 6px 12px;
+// }
+//
+// .btn:hover{
+//   border-color: gray;
+//   background: dimgray;
+//   cursor: pointer;
+//   color: white;
+// }
 
 .date_form, .result {
   margin: 30px auto;
@@ -327,8 +327,6 @@ button[class^="next_weeks"] {
   display: flex;
 }
 
-div[id^="msg"] {
-}
 
 #msg_full {
   background: #ffe4e1;
@@ -429,30 +427,30 @@ input[type="radio"] {
   display: none;
 }
 
-#apply_tab:checked ~ .tab_area .tab1_label {
+#tab_1:checked ~ .tab_area .tab1_label {
   background: #f8f8ff;
   color: #000;
 }
 
-#apply_tab:checked ~ .panel_area #apply_list {
+#tab_1:checked ~ .panel_area #apply_list {
   display: block;
 }
 
-#approve_tab:checked ~ .tab_area .tab2_label {
+#tab_2:checked ~ .tab_area .tab2_label {
   background: #f8f8ff;
   color: #000;
 }
 
-#approve_tab:checked ~ .panel_area #approve_list {
+#tab_2:checked ~ .panel_area #approve_list {
   display: block;
 }
 
-#arrive_tab:checked ~ .tab_area .tab3_label {
+#tab_3:checked ~ .tab_area .tab3_label {
   background: #f8f8ff;
   color: #000;
 }
 
-#arrive_tab:checked ~ .panel_area #arrive_list {
+#tab_3:checked ~ .panel_area #arrive_list {
   display: block;
 }
 

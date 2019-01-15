@@ -1,11 +1,11 @@
 <% if reserve.apply? %>
-  <%= button_to "承認", approve_admin_reservation_path(reserve.id), method: :patch %>
-  <%= button_to "非承認", refuse_admin_reservation_path(reserve.id), method: :patch %>
+  <%= button_to "承認", approve_admin_reservation_path(reserve.id), method: :patch, class: "btn btn-xs btn-info" %>
+  <%= button_to "非承認", refuse_admin_reservation_path(reserve.id), method: :patch, class: "btn btn-xs btn-warning" %>
 <% end %>
 <% if reserve.approve? %>
-  <%= button_to "受付", arrive_admin_reservation_path(reserve.id), method: :patch %>
-  <%= button_to "キャンセル", cancel_admin_reservation_path(reserve.id), method: :patch %>
+  <%= button_to "受付", arrive_admin_reservation_path(reserve.id), method: :patch, class: "btn btn-xs btn-primary" %>
+  <%= button_to "キャンセル", cancel_admin_reservation_path(reserve.id), method: :patch, class: "btn btn-xs btn-danger" %>
 <% end %>
 <% if reserve.arrive? %>
-  <%= button_to "退去・支払", leave_admin_reservation_path(reserve.id), method: :patch %>
+  <%= button_to "退去・支払", leave_admin_reservation_path(reserve.id), method: :patch, class: "btn btn-xs btn-success" %>
 <% end %>

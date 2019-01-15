@@ -1,13 +1,14 @@
 <h2>予約一覧</h2>
 
-<input type="radio" name="tab" id="apply_tab" checked>
-<input type="radio" name="tab" id="approve_tab">
-<input type="radio" name="tab" id="arrive_tab">
 
+
+<%= radio_button_tag :tab, "1", flash[:tab_1] %>
+<%= radio_button_tag :tab, "2", flash[:tab_2] %>
+<%= radio_button_tag :tab, "3", flash[:tab_3] %>
 <div class="tab_area">
-  <label class="tab1_label" for="apply_tab">申請一覧</label>
-  <label class="tab2_label" for="approve_tab">承認一覧</label>
-  <label class="tab3_label" for="arrive_tab">到着一覧</label>
+  <%= label_tag :tab_1, "申請一覧", class: "tab1_label" %>
+  <%= label_tag :tab_2, "承認一覧", class: "tab2_label" %>
+  <%= label_tag :tab_3, "到着一覧", class: "tab3_label" %>
 </div>
 
 <div class="panel_area">
@@ -24,3 +25,5 @@
     <%= render partial: 'list', locals:{reservations: reservations} %>
   </div>
 </div>
+
+<%= debug(params) %>

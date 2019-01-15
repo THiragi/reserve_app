@@ -11,15 +11,15 @@
     <div class="form_list">
       <%= render 'guest_form', f: f %>
       <div class="btn_bars">
-        <input type="button" class="btn" value="確認する" id="sendConfirm"/>
+        <input type="button" class="btn btn-default" value="確認する" id="sendConfirm"/>
       </div>
     </div>
 
     <div class="confirm_list" style="display: none">
       <%= render 'confirm' %>
       <div class="btn_bars">
-        <%= f.submit "予約を申請する", class:"btn" %>
-        <input type="button" class="btn" value="変更する" id="editConfirm"/>
+        <%= f.submit "予約を申請する", class:"btn btn-success" %>
+        <input type="button" class="btn btn-primary" value="変更する" id="editConfirm"/>
       </div>
     </div>
 <% end %>

@@ -4,7 +4,7 @@
 <div class="panel_area">
 <%= form_tag(search_reservations_path, method: 'get') do %>
   <%= text_field_tag :search %>
-  <%= submit_tag '検索', name: nil, class:"btn" %>
+  <%= submit_tag '検索', name: nil, class:"btn btn-sm btn-primary" %>
 <% end %>
 <%= flash[:success] %>
 <table>
@@ -14,7 +14,7 @@
         <td><%= reserve.guest_name %></td>
         <td><%= reserve.check_in_date %></td>
         <td><%= reserve.check_out_date %></td>
-        <td><%= link_to "予約内容の変更", edit_reservation_path(reserve.id)%></td>
+        <td><%= link_to "予約内容の変更", edit_reservation_path(reserve.id), class: "btn btn-sm btn-success" %></td>
       </tr>
     <% end %>
 </table>
