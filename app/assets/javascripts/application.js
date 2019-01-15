@@ -385,7 +385,7 @@ $(function(){
               type: "linear",
               position: "left",
               ticks: {
-                max: 30,
+                max: 15,
                 min: 0,
                 stepSize: 1
               },
@@ -394,7 +394,7 @@ $(function(){
               type: "linear",
               position: "right",
               ticks: {
-                max: 100000,
+                max: 50000,
                 min: 0,
                 stepSize: 10000
               },

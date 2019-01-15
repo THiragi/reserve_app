@@ -1,6 +1,6 @@
 <h2>予約一覧</h2>
 
-
+<% flash[:tab_1] = true if flash[:tab_2].blank? && flash[:tab_3].blank? %>
 
 <%= radio_button_tag :tab, "1", flash[:tab_1] %>
 <%= radio_button_tag :tab, "2", flash[:tab_2] %>

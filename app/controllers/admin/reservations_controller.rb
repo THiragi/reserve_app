@@ -1,18 +1,8 @@
 class Admin::ReservationsController < Admin::BaseController
   before_action :authenticate_admin!
 
-  # def current_method
-  #   caller_locations(1).first.label
-  # end
-
   def index
-    # path = Rails.application.routes.recognize_path(request.referer)
-    # Rails.logger.debug("##################")
-    # Rails.logger.debug(path[:controller])
-    # Rails.logger.debug(params[:action])
-    # Rails.logger.debug(current_method)
     @reservations = Reservation.all.order(created_at: :desc)
-    flash[:tab_1] = true
   end
 
   def show
@@ -46,6 +36,7 @@ class Admin::ReservationsController < Admin::BaseController
        @reservation.cancel!
        NotificationMailer.confirm_cancel(@reservation).deliver_now
        redirect_to admin_reservations_path
+       flash[:tab_2] = true
     end
 
   end

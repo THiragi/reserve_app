@@ -8,12 +8,12 @@
 
 5.times do |i|
   Reservation.create!(
-    reserve_no: "zzzz1225521#{i}",
-    guest_name: "DP#{i}",
-    guest_phone: "0808889291#{i}",
-    guest_mail: "DP3#{i}@gmail.com",
-    check_in_date: "2019-01-16",
-    check_out_date: "2019-01-17",
+    reserve_no: "zzzz1226521#{i}",
+    guest_name: "Tourist#{i}",
+    guest_phone: "0808889292#{i}",
+    guest_mail: "tourist4#{i}@gmail.com",
+    check_in_date: "2019-01-17",
+    check_out_date: "2019-01-18",
     room_id: "#{1+i}",
     guest_count: "1",
     status: "apply")
