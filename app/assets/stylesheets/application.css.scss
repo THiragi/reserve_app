@@ -144,6 +144,12 @@ h2 {
 .room_set strong {
   font-size: 18px;
 }
+
+.room_set table {
+  border-collapse: separate;
+  border-spacing: 8px;
+}
+
 .room_set td {
   position: relative;
   text-align: center;
