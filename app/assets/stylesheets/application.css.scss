@@ -411,54 +411,71 @@ input[type="radio"] {
 }
 
 .tab_area {
-  margin: 0 10px;
+  font-size: 0;
 }
 
 .tab_area label {
+  margin: 0;
   width: 100px;
   display: inline-block;
   padding: 8px 0;
-  color: #999;
-  background: #ddd;
+  color: darkgray;
+  background: white;
+  border-top: 3px solid darkgray;
+  border-left: 1px solid gray;
+  margin-bottom: -1px;
   text-align: center;
   font-size:16px;
   cursor: pointer;
 }
 
-.panel_area {
-  background: #f8f8ff;
+.tab_area label:last-child {
+  border-right: 1px solid gray;
 }
 
+
+#tab_1:checked ~ .tab_area .tab1_label,
+#tab_2:checked ~ .tab_area .tab2_label,
+#tab_3:checked ~ .tab_area .tab3_label {
+  border-top: 3px solid #209ab3;
+  border-bottom: 1px solid white;
+  background:  white;
+  color: #209ab3;
+}
+
+
+
+#tab_1:checked ~ .panel_area #apply_list,
+#tab_2:checked ~ .panel_area #approve_list,
+#tab_3:checked ~ .panel_area #arrive_list {
+  display: block;
+}
+
+
+.panel_area {
+  // border-top: 4px solid darkturquoise;
+  background: white;
+  border: 1px solid gray;
+  padding: 0.5em 1em;
+}
+
+.panel_area th {
+  padding: 8px;
+}
+
+.panel_area td {
+  padding: 8px;
+  border-bottom: 1px dotted gray;
+}
 .tab_panel {
   display: none;
 }
 
-#tab_1:checked ~ .tab_area .tab1_label {
-  background: #f8f8ff;
-  color: #000;
-}
 
-#tab_1:checked ~ .panel_area #apply_list {
-  display: block;
-}
 
-#tab_2:checked ~ .tab_area .tab2_label {
-  background: #f8f8ff;
-  color: #000;
-}
 
-#tab_2:checked ~ .panel_area #approve_list {
-  display: block;
-}
 
-#tab_3:checked ~ .tab_area .tab3_label {
-  background: #f8f8ff;
-  color: #000;
-}
 
-#tab_3:checked ~ .panel_area #arrive_list {
-  display: block;
-}
 
 .errors_explain {
   margin-bottom: 16px;
