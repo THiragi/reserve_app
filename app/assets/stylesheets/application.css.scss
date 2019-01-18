@@ -163,7 +163,8 @@ h2 {
 
 .room_set td:hover {
   cursor: pointer;
-  background: lightblue;
+  transform: scale(1.1);
+  transition-duration: 0.3s;
 }
 
 .room_set td a{
@@ -459,6 +460,7 @@ input[type="radio"] {
   padding: 0.5em 1em;
 }
 
+
 .panel_area th {
   padding: 8px;
 }
@@ -467,14 +469,24 @@ input[type="radio"] {
   padding: 8px;
   border-bottom: 1px dotted gray;
 }
+
 .tab_panel {
   display: none;
 }
 
 
+.agg_menu {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  text-align: justify;
+}
 
-
-
+.agg_menu li {
+  display: inline-block;
+  font-size: 16px;
+}
 
 
 .errors_explain {

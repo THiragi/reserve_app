@@ -1,14 +1,12 @@
 <header>
 
-
-
     <%= link_to "Dashboard", admin_reservations_path, class: "logo" %>
     <nav>
       <ul class="menu">
-        <li><%= link_to "予約一覧", admin_reservations_path, method: :get %></li>
-        <li><%= link_to "客室タイプ一覧", admin_room_types_path, method: :get %></li>
-        <li><%= link_to "宿泊料金一覧", admin_rates_path, method: :get %></li>
-        <li><a>集計一覧</a>
+        <li><%= link_to "予約管理", admin_reservations_path, method: :get %></li>
+        <li><%= link_to "客室タイプ管理", admin_room_types_path, method: :get %></li>
+        <li><%= link_to "宿泊料金管理", admin_rates_path, method: :get %></li>
+        <li><%= link_to "売上集計管理", day_admin_aggregations_url, method: :get %>
           <ul>
             <li><%= link_to "月別売上集計", month_admin_aggregations_url, method: :get %></li>
             <li><%= link_to "日別売上集計", day_admin_aggregations_url, method: :get %></li>

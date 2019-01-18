@@ -1,15 +1,29 @@
 <% provide(:title) %>
-<h2>日別売上集計</h2>
+<h2>売上集計</h2>
 <div class="panel_area">
-  <% today = Date.today %>
-  <% month = today.beginning_of_month..today.end_of_month %>
-  <h3>
-    <%= today.month %>月の売上実績
-  </h3>
+
+  <% term = @today.beginning_of_month..@today.end_of_month %>
+    <h3><%= @today.month %>月の売上実績</h3>
+    <ul class="agg_menu">
+      <li>
+        <%= link_to "先月", day_admin_aggregations_path(today: @today.prev_month), method: :get %>
+      </li>
+      <li>
+        <%= link_to "今月", day_admin_aggregations_path, method: :get %>
+      </li>
+      <li>
+        <% if @today.next_month > Date.today %>
+          <span style="color:gray;">翌月</span>
+        <% else %>
+          <%= link_to "翌月", day_admin_aggregations_path(today: @today.next_month), method: :get %>
+        <% end %>
+      </li>
+    </ul>
+
 
   <canvas id="daily_chart"></canvas>
   <div class="btn_bars">
-      <button class="btn" id="table_toggle">日別集計表を表示</button>
+   <button class="btn btn-default" id="table_toggle">日別集計表を表示</button>
   </div>
 
   <div class="agg_table" style="display: none;">
@@ -24,7 +38,7 @@
         </tr>
       </thead>
       <tbody>
-        <% month.each do |d| %>
+        <% term.each do |d| %>
         <tr class="per_day">
           <% reserves = Reservation.get_by_date(d) %>
           <td class="date_tag"><%= d %></td>
@@ -44,5 +58,4 @@
       </tbody>
     </table>
   </div>
-
 </div>

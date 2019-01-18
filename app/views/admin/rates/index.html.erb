@@ -1,8 +1,8 @@
 <h2>宿泊料金一覧</h2>
-<%= link_to "新しい宿泊料金を追加", new_admin_rate_path, method: :get, class: "btn btn-primary" %>
+
 
 <div class="panel_area">
-
+<%= link_to "新しい宿泊料金を追加", new_admin_rate_path, method: :get, class: "btn btn-primary" %>
   <table>
     <thead>
       <tr>
@@ -27,8 +27,8 @@
         <td><%= rate.end_date %></td>
         <td><%= rate.weekday %></td>
         <td><%= rate.rank %></td>
-        <td><%= link_to "編集", edit_admin_rate_path(rate.id), method: :get %></td>
-        <td><%= link_to "削除", admin_rate_path(rate.id), method: :delete %></td>
+        <td><%= link_to "編集", edit_admin_rate_path(rate.id), method: :get, class:"btn btn-xs btn-success" %></td>
+        <td><%= link_to "削除", admin_rate_path(rate.id), method: :delete, class: "btn btn-xs btn-warning" %></td>
       </tr>
     <% end %>
     </tbody>
