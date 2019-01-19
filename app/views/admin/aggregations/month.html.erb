@@ -1,0 +1,61 @@
+<% provide(:title) %>
+<h2>売上集計</h2>
+<div class="panel_area">
+
+  <% term = @today.beginning_of_month..@today.end_of_month %>
+    <h3><%= @today.strftime('%Y年') %>の売上実績</h3>
+    <ul class="agg_menu">
+      <li>
+        <%= link_to "昨年", month_admin_aggregations_path(today: @today.prev_month), method: :get %>
+      </li>
+      <li>
+        <%= link_to "今年", month_admin_aggregations_path, method: :get %>
+      </li>
+      <li>
+        <% if @today.next_year > Date.today %>
+          <span style="color:gray;">翌年</span>
+        <% else %>
+          <%= link_to "翌年", month_admin_aggregations_path(today: @today.next_month), method: :get %>
+        <% end %>
+      </li>
+    </ul>
+
+
+  <canvas id="daily_chart"></canvas>
+  <div class="btn_bars">
+   <button class="btn btn-default" id="table_toggle">日別集計表を表示</button>
+  </div>
+
+  <div class="agg_table" style="display: none;">
+    <table>
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>宿泊人数</th>
+          <th>販売客室数</th>
+          <th>客室稼働率</th>
+          <th>売上金額</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% term.each do |d| %>
+        <tr class="per_day">
+          <% reserves = Reservation.get_by_date(d) %>
+          <td class="date_tag"><%= d %></td>
+          <td class="guest_tag"><%= reserves.sum(:guest_count) %></td>
+          <td class="room_tag"><%= reserves.count %></td>
+          <td><%= number_to_percentage(((reserves.count)/((Room.count).to_f))*100) %></td>
+          <td class="sale_tag">
+            <% total = 0 %>
+            <% reserves.each do |r| %>
+              <% room_type = Room.find(r.room_id).room_type_id %>
+              <% total += Rate.get_amount(room_type, d).amount %>
+            <% end %>
+            <%= total %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

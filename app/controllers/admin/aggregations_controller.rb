@@ -7,6 +7,13 @@ class Admin::AggregationsController < Admin::BaseController
 
 
   def month
+    @reservations = Reservation.all
+
+    if params[:today].blank?
+      @today = Date.today
+    else
+      @today = Date.parse(params[:today])
+    end
   end
 
   def day
