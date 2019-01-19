@@ -12,8 +12,8 @@
     guest_name: "Tourist#{i}",
     guest_phone: "0808889292#{i}",
     guest_mail: "tourist4#{i}@gmail.com",
-    check_in_date: "2019-01-18",
-    check_out_date: "2019-01-19",
+    check_in_date: "2019-01-19",
+    check_out_date: "2019-01-20",
     room_id: "#{1+i}",
     guest_count: "1",
     status: "apply")
