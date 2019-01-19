@@ -7,6 +7,7 @@ class Reservation < ApplicationRecord
   validates :guest_phone, presence: true, numericality: :true, length: { in: 10..15 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :guest_mail, presence: true, format: { with: VALID_EMAIL_REGEX }
+  validates :apply_date, presence: true
   validates :check_in_date, presence: true
   validates :check_out_date, presence: true
   validates :room_id, presence: true
@@ -24,15 +25,11 @@ class Reservation < ApplicationRecord
   end
 
   def in_date_cannot_be_in_the_past
-    if check_in_date.present? && check_in_date < Date.today
-      errors.add(:check_in_date, "過去の日付は使用できません")
-    end
+    errors.add(:check_in_date, "申請日より前の日付は使用できません") if check_in_date < apply_date
   end
 
   def out_date_cannot_be_before_the_in_date
-    if check_out_date < check_in_date
-      errors.add(:check_out_date, "チェックイン日より前の日付は使用できません")
-    end
+    errors.add(:check_out_date, "チェックイン日より前の日付は使用できません")  if check_out_date < check_in_date
   end
 
   def self.get_reserve(room_id, date)

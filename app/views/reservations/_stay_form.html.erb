@@ -1,6 +1,9 @@
 <div class="reserve_form">
   <p>予約内容</p>
-
+  <div>
+      <%= f.label :apply_date, "申請日" %><span><%= Date.today %></span>
+      <%= f.hidden_field :apply_date, value: Date.today %>
+  </div>
   <div>
     <%= f.label :room_id, "客室名" %><span id="inputRoom"><%= Room.find(@room_id).room_name %></span>
     <%= f.hidden_field :room_id, value: @room_id %>

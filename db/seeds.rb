@@ -6,15 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-5.times do |i|
+Reservation.destroy_all
+
+20.times do |i|
+  r = rand(1..Room.count)
+  c = Room.find(r).room_type.capacity
+  term = Date.new(2019, 1, 1)..Date.new(2019, 1, 31)
+  apply = term.to_a.sample
+  checkin = apply.tomorrow
+  checkout = checkin.tomorrow
   Reservation.create!(
-    reserve_no: "zzzz1226521#{i}",
+    reserve_no: (('a'..'z').to_a).sample(4).join + sprintf('%08d', Reservation.count + 1),
     guest_name: "Tourist#{i}",
-    guest_phone: "0808889292#{i}",
-    guest_mail: "tourist4#{i}@gmail.com",
-    check_in_date: "2019-01-19",
-    check_out_date: "2019-01-20",
-    room_id: "#{1+i}",
-    guest_count: "1",
-    status: "apply")
+    guest_phone: 8908889292 + i,
+    guest_mail: "tourist@gmail.com",
+    check_in_date: checkin,
+    check_out_date: checkout,
+    room_id: r,
+    guest_count: rand(1..c),
+    status: "apply",
+    apply_date: apply)
 end

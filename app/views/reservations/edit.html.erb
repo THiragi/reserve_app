@@ -22,6 +22,10 @@
   <%= form_for @reservation do |f| %>
         <%= f.hidden_field :reserve_no %>
     <div>
+        <%= f.label :apply_date, "申請日" %><span><%= @reservation.apply_date %></span>
+        <%= f.hidden_field :apply_date %>
+    </div>
+    <div>
         <%= f.label :guest_name, "予約者名" %><span><%= @reservation.guest_name %></span>
         <%= f.hidden_field :guest_name %>
     </div>
