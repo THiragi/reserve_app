@@ -22,6 +22,16 @@
 //= require Chart.min
 
 $(function(){
+  //
+  $('.room_list li').hide();
+  $('.room_list li').each(function(i){
+    $(this).delay(500 * i).fadeIn(1000);
+
+  });
+
+
+
+
 
 // Step Form
 
