@@ -207,14 +207,12 @@ $(function(){
     var prevcheck = $('div').hasClass('weeks_set_' + prev);
 
     if (prevcheck) {
-        $("div[data-num='"+ current +"']").css('display','none');
-        $("div[data-num='"+ prev +"']").css('display','block');
-        console.log(current);
-        console.log(prev);
-        console.log(setnum);
-        console.log(prevstart);
-        console.log(prevcheck);
+      $(this).prop('disabled', true);
+      $("div[data-num='"+ current +"']").css('display','none');
+      $("div[data-num='"+ prev +"']").css('display','block');
+      $("div[data-num='"+ prev +"']").find('button').prop('disabled', false);
     } else {
+      $(this).prop('disabled', true);
       $.ajax({
           url: '/rooms/' + id + '/prev',
           type:'POST',
@@ -226,11 +224,6 @@ $(function(){
       .done(function(respose){
         $('#calendar-area').prepend(respose);
         $("div[data-num='"+ current +"']").css('display','none');
-        console.log(current);
-        console.log(prev);
-        console.log(setnum);
-        console.log(prevstart);
-        console.log(prevcheck);
       })
       .fail(function(){
         alert('error!');
@@ -240,6 +233,7 @@ $(function(){
   });
 
   $(document).on('click','.next_weeks', function(event){
+
     var current = parseInt($(this).parent().parent().attr('data-num'));
     var next = current + 1;
     var nextstart = $(this).children().val();
@@ -247,14 +241,12 @@ $(function(){
     var nextcheck = $('div').hasClass('weeks_set_' + next);
 
     if (nextcheck) {
+      $(this).prop('disabled', true);
       $("div[data-num='"+ current +"']").css('display','none');
       $("div[data-num='"+ next +"']").css('display','block');
-      console.log(current);
-      console.log(next);
-      console.log(setnum);
-      console.log(nextstart);
-      console.log(nextcheck);
+      $("div[data-num='"+ next +"']").find('button').prop('disabled', false);
     } else {
+      $(this).prop('disabled', true);
       $.ajax({
           url: '/rooms/' + id + '/next',
           type:'POST',
@@ -266,11 +258,6 @@ $(function(){
       .done(function(respose){
         $('#calendar-area').append(respose);
         $("div[data-num='"+ current +"']").css('display','none');
-        console.log(current);
-        console.log(next);
-        console.log(setnum);
-        console.log(nextstart);
-        console.log(nextcheck);
       })
       .fail(function(){
         alert('error!');
